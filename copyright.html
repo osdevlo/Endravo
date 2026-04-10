@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Copyright — Endravo</title>
+  <meta name="description" content="Endravo Copyright information, app rights, and App Store acknowledgements." />
+  <style>
+    :root {
+      --bg: #0f172a;
+      --bg-soft: #111827;
+      --card: rgba(255,255,255,0.08);
+      --text: #f8fafc;
+      --muted: #cbd5e1;
+      --accent: #ff8a1f;
+      --border: rgba(255,255,255,0.14);
+      --shadow: 0 20px 50px rgba(0,0,0,0.35);
+      --radius: 24px;
+      --max: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top right, rgba(255,138,31,0.28), transparent 28%),
+        radial-gradient(circle at top left, rgba(34,193,255,0.18), transparent 25%),
+        linear-gradient(180deg, #0b1120 0%, #111827 100%);
+      line-height: 1.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      width: min(calc(100% - 32px), var(--max));
+      margin: 0 auto;
+    }
+
+    .nav, header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(16px);
+      background: rgba(10, 15, 28, 0.72);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 0;
+      gap: 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      font-size: 1.15rem;
+    }
+
+    .logo {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, var(--accent-2), var(--accent));
+      box-shadow: var(--shadow);
+      color: white;
+      font-weight: 900;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .nav-links a:hover { color: var(--text); }
+
+    main {
+      padding: 60px 0;
+    }
+
+    .page-header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .page-header h1 {
+      margin: 0 0 12px;
+      font-size: clamp(2rem, 4vw, 3rem);
+      letter-spacing: -0.04em;
+    }
+
+    .page-header p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 1.04rem;
+    }
+
+    .content {
+      max-width: 900px;
+      margin: 0 auto;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 40px;
+    }
+
+    .content h2 {
+      margin: 32px 0 16px;
+      font-size: 1.5rem;
+      color: var(--text);
+      letter-spacing: -0.02em;
+    }
+
+    .content p,
+    .content li {
+      margin: 12px 0;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .content ul {
+      margin: 12px 0;
+      padding-left: 20px;
+      color: var(--muted);
+    }
+
+    .content li strong {
+      color: var(--text);
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--accent);
+      margin-bottom: 32px;
+      transition: opacity 0.2s ease;
+    }
+
+    .back-link:hover { opacity: 0.8; }
+
+    footer {
+      padding: 40px 0;
+      color: var(--muted);
+      text-align: center;
+      font-size: 0.95rem;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      margin-top: 60px;
+    }
+
+    .footer-links {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 24px;
+      margin-top: 12px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      font-size: 0.9rem;
+      color: var(--muted);
+      transition: color 0.2s ease;
+    }
+
+    .footer-links a:hover { color: var(--text); }
+
+    @media (max-width: 760px) {
+      main { padding: 40px 0; }
+      .content { padding: 24px; }
+      .page-header h1 { font-size: 1.8rem; }
+      .footer-links { gap: 12px; }
+      .nav-inner { flex-direction: column; align-items: flex-start; }
+      .nav-links { flex-wrap: wrap; gap: 12px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="container nav-inner">
+      <a href="index.html" class="brand">
+        <div class="logo">E</div>
+        <span>Endravo</span>
+      </a>
+      <nav class="nav-links">
+        <a href="privacy-policy.html">Privacy Policy</a>
+        <a href="copyright.html">Copyright</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="container page-header">
+      <h1>Copyright & App Store Rights</h1>
+      <p>All rights and app distribution acknowledgements for Endravo and the App Store.</p>
+    </section>
+
+    <section class="container content">
+      <a class="back-link" href="index.html">← Back to Home</a>
+
+      <h2>Copyright ownership</h2>
+      <p>
+        © 2026 Endravo. All rights reserved. The Endravo app, branding, content, and user interface are protected by copyright, trademark, and other intellectual property laws.
+      </p>
+
+      <h2>App rights</h2>
+      <p>
+        Endravo is offered as a mobile application for iOS and may be distributed through the Apple App Store. Use of the Endravo app is subject to Endravo's own terms and Apple's App Store terms and conditions.
+      </p>
+
+      <h2>App Store acknowledgements</h2>
+      <p>
+        App Store and Apple logo are trademarks of Apple Inc. This product uses the App Store service, but is not endorsed, certified, or sponsored by Apple.
+      </p>
+
+      <h2>Use of content</h2>
+      <ul>
+        <li><strong>Permitted use:</strong> You may access the app for personal, non-commercial use in accordance with Endravo's policies.</li>
+        <li><strong>Restricted use:</strong> Copying, reproducing, modifying, or creating derivative works without permission is prohibited.</li>
+        <li><strong>Third-party marks:</strong> Other trademarks, logos, and brand names appearing in Endravo are the property of their respective owners.</li>
+      </ul>
+
+      <div class="last-section">
+        <p>
+          For questions about copyright, app distribution, or App Store representation, please contact support@endravo.app.
+        </p>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container">
+        <div>© 2026 Endravo. All rights reserved.</div>
+        <div class="footer-links">
+          <a href="privacy-policy.html">Privacy Policy</a>
+          <a href="index.html">Home</a>
+        </div>
+      </div>
+    </footer>
+  </main>
+</body>
+</html>
