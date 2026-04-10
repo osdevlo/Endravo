@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Endravo — Run Smarter. Train Stronger.</title>
   <meta name="description" content="Endravo is the all-in-one training app for running, strength, routes, and recovery." />
+  <link rel="icon" href="icon.png" type="image/png" />
   <style>
     :root {
       --bg: #0f172a;
@@ -76,8 +77,14 @@
       place-items: center;
       background: linear-gradient(135deg, var(--accent-2), var(--accent));
       box-shadow: var(--shadow);
-      color: white;
-      font-weight: 900;
+      overflow: hidden;
+    }
+
+    .logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
     }
 
     .nav-links {
@@ -446,114 +453,7 @@
       color: var(--text);
     }
 
-    .btn-privacy {
-      background: transparent;
-      border: none;
-      padding: 0;
-      color: var(--muted);
-      cursor: pointer;
-      font-size: 0.9rem;
-      transition: color 0.2s ease;
-    }
 
-    .btn-privacy:hover {
-      color: var(--text);
-    }
-
-    .modal {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.6);
-      z-index: 1000;
-      padding: 20px;
-      overflow-y: auto;
-    }
-
-    .modal.open {
-      display: flex;
-      align-items: flex-start;
-      justify-content: center;
-      padding-top: 40px;
-    }
-
-    .modal-content {
-      background: var(--bg-soft);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 40px;
-      max-width: 700px;
-      width: 100%;
-      max-height: 80vh;
-      overflow-y: auto;
-      box-shadow: var(--shadow);
-      animation: slideIn 0.3s ease-out;
-    }
-
-    @keyframes slideIn {
-      from {
-        opacity: 0;
-        transform: translateY(-20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .modal-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 24px;
-    }
-
-    .modal-header h2 {
-      margin: 0;
-      font-size: 1.8rem;
-      letter-spacing: -0.03em;
-    }
-
-    .modal-close {
-      background: transparent;
-      border: none;
-      color: var(--muted);
-      font-size: 1.5rem;
-      cursor: pointer;
-      padding: 0;
-      width: 32px;
-      height: 32px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: color 0.2s ease;
-    }
-
-    .modal-close:hover {
-      color: var(--text);
-    }
-
-    .modal-body h3 {
-      margin: 24px 0 12px;
-      font-size: 1.1rem;
-      color: var(--text);
-    }
-
-    .modal-body p {
-      margin: 12px 0;
-      color: var(--muted);
-      line-height: 1.6;
-    }
-
-    .modal-body ul {
-      margin: 12px 0;
-      padding-left: 20px;
-      color: var(--muted);
-    }
-
-    .modal-body li {
-      margin: 8px 0;
-    }
 
     @media (max-width: 760px) {
       .modal-content {
@@ -609,7 +509,7 @@
   <header class="nav">
     <div class="container nav-inner">
       <a href="#top" class="brand">
-        <div class="logo">E</div>
+        <div class="logo"><img src="icon.png" alt="Endravo logo" /></div>
         <span>Endravo</span>
       </a>
       <nav class="nav-links">
@@ -625,10 +525,10 @@
     <section class="hero">
       <div class="container hero-grid">
         <div>
-          <div class="eyebrow">🏃 One app for routes, workouts, strength, and recovery</div>
+          <div class="eyebrow">🏃 One app for routes, workouts, strength, recovery, and weight loss</div>
           <h1>Run smarter with <span class="gradient-text">Endravo</span>.</h1>
           <p class="lead">
-            Build your plan, follow structured workouts, create routes, train with strength, and stay on top of recovery—all in one clean app for runners and everyday athletes.
+            Build your plan, follow structured workouts, create routes, train with strength, and stay on top of recovery and sustainable weight loss—all in one clean app for runners and everyday athletes.
           </p>
           <div class="hero-actions">
             <a class="btn btn-primary" href="https://apps.apple.com/" target="_blank" rel="noopener noreferrer"> Download on the App Store</a>
@@ -645,7 +545,7 @@
             </div>
             <div class="stat">
               <strong>Apple Watch</strong>
-              <span>Take training with you</span>
+            <span>Track runs, recovery, and weight goals</span>
             </div>
           </div>
         </div>
@@ -660,7 +560,7 @@
               <ul class="list">
                 <li>Race-focused running plans</li>
                 <li>Hybrid plans for runners</li>
-                <li>Long-run day selection</li>
+                <li>Weight-loss friendly training plans</li>
               </ul>
             </div>
           </div>
@@ -722,9 +622,9 @@
             <p>Create intervals, tempo runs, easy days, and sessions that fit your current fitness.</p>
           </article>
           <article class="card">
-            <div class="icon-badge">💪</div>
-            <h3>Strength for Runners</h3>
-            <p>Support performance and reduce injury risk with strength work built for endurance athletes.</p>
+            <div class="icon-badge">⚖️</div>
+            <h3>Weight Loss Support</h3>
+            <p>Build calorie-smart plans, workouts, and recovery routines designed for sustainable fat loss and improved fitness.</p>
           </article>
           <article class="card">
             <div class="icon-badge">🧠</div>
@@ -786,140 +686,17 @@
     <div class="container">
       <div>© 2026 Endravo. Replace the App Store link with your live app URL when ready.</div>
       <div class="footer-links">
-        <a href="#" onclick="openPrivacyPolicy(); return false;">Privacy Policy</a>
+        <a href="privacy-policy.html">Privacy Policy</a>
         <a href="#" onclick="openTerms(); return false;">Terms of Service</a>
         <a href="mailto:support@endravo.app">Contact Support</a>
       </div>
     </div>
   </footer>
 
-  <!-- Privacy Policy Modal -->
-  <div id="privacyModal" class="modal">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h2>Privacy Policy</h2>
-        <button class="modal-close" onclick="closePrivacyPolicy();">&times;</button>
-      </div>
-      <div class="modal-body">
-        <p><strong>Last Updated: April 2026</strong></p>
-        
-        <h3>1. Introduction</h3>
-        <p>
-          Endravo ("we," "us," "our," or "Company") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and otherwise handle your information when you use our mobile application, website, and related services (collectively, the "Service").
-        </p>
-
-        <h3>2. Information We Collect</h3>
-        <p>We collect information you provide directly to us, including:</p>
-        <ul>
-          <li><strong>Account Information:</strong> When you create an account, we collect your name, email address, password, and profile preferences.</li>
-          <li><strong>Training Data:</strong> Information about your workouts, routes, running metrics, strength sessions, and recovery data.</li>
-          <li><strong>Device Information:</strong> Data from your Apple Watch and iPhone, including health and fitness metrics.</li>
-          <li><strong>Location Data:</strong> When enabled, we collect GPS location data to track routes and distance.</li>
-          <li><strong>Communication Data:</strong> If you contact us, we collect the content of your messages and contact information.</li>
-        </ul>
-
-        <h3>3. How We Use Your Information</h3>
-        <p>We use the information we collect to:</p>
-        <ul>
-          <li>Provide, operate, maintain, and improve the Service</li>
-          <li>Generate AI-powered training plans and personalized recommendations</li>
-          <li>Track your fitness progress and recovery metrics</li>
-          <li>Send transactional emails and service-related notifications</li>
-          <li>Respond to your inquiries and customer support requests</li>
-          <li>Analyze usage patterns to enhance user experience</li>
-          <li>Detect, prevent, and address technical or security issues</li>
-          <li>Comply with legal obligations</li>
-        </ul>
-
-        <h3>4. Data Sharing and Disclosure</h3>
-        <p>
-          We do not sell, trade, or rent your personal information to third parties. We may share your information only in the following circumstances:
-        </p>
-        <ul>
-          <li><strong>Service Providers:</strong> We share information with third-party service providers who support our operations (e.g., cloud storage, analytics).</li>
-          <li><strong>Apple Services:</strong> Your health and fitness data is shared with Apple HealthKit and Health app as needed for functionality.</li>
-          <li><strong>Legal Requirements:</strong> We may disclose information if required by law or to protect our legal rights.</li>
-          <li><strong>Business Transfers:</strong> In the event of a merger, acquisition, or sale of assets, your information may be transferred as part of that transaction.</li>
-        </ul>
-
-        <h3>5. Data Security</h3>
-        <p>
-          We implement industry-standard security measures to protect your information. However, no method of transmission over the internet is 100% secure. While we strive to protect your data, we cannot guarantee absolute security.
-        </p>
-
-        <h3>6. Your Rights and Choices</h3>
-        <p>Depending on your location, you may have the right to:</p>
-        <ul>
-          <li>Access your personal information</li>
-          <li>Correct or update inaccurate data</li>
-          <li>Request deletion of your account and data</li>
-          <li>Opt-out of non-essential communications</li>
-          <li>Disable location tracking at any time through app settings</li>
-        </ul>
-
-        <h3>7. Children's Privacy</h3>
-        <p>
-          Endravo is not intended for children under 13. We do not knowingly collect personal information from children under 13. If we become aware that a child has provided us with personal information, we will delete such information promptly.
-        </p>
-
-        <h3>8. Data Retention</h3>
-        <p>
-          We retain your personal information for as long as necessary to provide the Service and fulfill the purposes outlined in this Privacy Policy. You can request deletion of your account at any time through app settings or by contacting us.
-        </p>
-
-        <h3>9. Third-Party Links</h3>
-        <p>
-          Our Service may contain links to third-party websites and applications. We are not responsible for their privacy practices. We encourage you to review their privacy policies before sharing your information.
-        </p>
-
-        <h3>10. Changes to This Privacy Policy</h3>
-        <p>
-          We may update this Privacy Policy periodically. We will notify you of significant changes via email or by posting a notice in the app. Your continued use of the Service constitutes acceptance of the updated Privacy Policy.
-        </p>
-
-        <h3>11. Contact Us</h3>
-        <p>
-          If you have questions or concerns about this Privacy Policy or our privacy practices, please contact us at:
-        </p>
-        <p>
-          <strong>Email:</strong> privacy@endravo.app<br>
-          <strong>Mailing Address:</strong> Endravo Inc., Contact Support through the app
-        </p>
-
-        <p style="margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--border); color: var(--muted); font-size: 0.9rem;">
-          This Privacy Policy complies with Apple App Store guidelines and international privacy regulations including GDPR and CCPA.
-        </p>
-      </div>
-    </div>
-  </div>
-
   <script>
-    function openPrivacyPolicy() {
-      document.getElementById('privacyModal').classList.add('open');
-      document.body.style.overflow = 'hidden';
-    }
-
-    function closePrivacyPolicy() {
-      document.getElementById('privacyModal').classList.remove('open');
-      document.body.style.overflow = 'auto';
-    }
-
     function openTerms() {
-      alert('Terms of Service page - add similar modal structure for full implementation');
+      alert('Terms of Service page - add similar dedicated page for full implementation');
     }
-
-    // Close modal when clicking outside of it
-    window.addEventListener('click', function(event) {
-      const modal = document.getElementById('privacyModal');
-      if (event.target === modal) {
-        closePrivacyPolicy();
-      }
-    });
-
-    // Close modal with Escape key
-    document.addEventListener('keydown', function(event) {
-      if (event.key === 'Escape') {
-        closePrivacyPolicy();
-      }
-    });
   </script>
+</body>
+</html>
