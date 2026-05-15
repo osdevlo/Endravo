@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Endravo — Run Smarter. Train Stronger.</title>
-  <meta name="description" content="Endravo is the all-in-one training app for running, strength, routes, and recovery." />
+  <meta name="description" content="Download Endravo on the App Store to plan runs, build routes, train strength, and track recovery in one focused fitness app." />
   <link rel="icon" href="icon.png" type="image/png" />
   <style>
     :root {
@@ -97,6 +97,14 @@
 
     .nav-links a:hover { color: var(--text); }
 
+    .nav-links .nav-download {
+      color: white;
+      background: rgba(255,138,31,0.18);
+      border: 1px solid rgba(255,138,31,0.46);
+      border-radius: 999px;
+      padding: 8px 12px;
+    }
+
     .btn {
       display: inline-flex;
       align-items: center;
@@ -176,7 +184,13 @@
       display: flex;
       gap: 14px;
       flex-wrap: wrap;
-      margin-bottom: 26px;
+      margin-bottom: 12px;
+    }
+
+    .app-store-note {
+      color: #e2e8f0;
+      font-size: 0.95rem;
+      margin: 0 0 24px;
     }
 
     .hero-stats {
@@ -202,6 +216,25 @@
     .stat span {
       color: var(--muted);
       font-size: 0.94rem;
+    }
+
+    .download-proof {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin: 24px 0 0;
+      padding: 0;
+      list-style: none;
+      color: #e2e8f0;
+      font-size: 0.95rem;
+    }
+
+    .download-proof li {
+      padding: 9px 13px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid var(--border);
     }
 
     .phone-stack {
@@ -516,7 +549,7 @@
         <a href="#features">Features</a>
         <a href="#plans">Plans</a>
         <a href="#watch">Apple Watch</a>
-        <a href="#download">Download</a>
+        <a class="nav-download" href="https://apps.apple.com/us/app/endravo/id6761561213" target="_blank" rel="noopener noreferrer">Download</a>
       </nav>
     </div>
   </header>
@@ -525,27 +558,28 @@
     <section class="hero">
       <div class="container hero-grid">
         <div>
-          <div class="eyebrow">🏃 One app for routes, workouts, strength, recovery, and weight loss</div>
-          <h1>Run smarter with <span class="gradient-text">Endravo</span>.</h1>
+          <div class="eyebrow">🏃 Available now on the App Store</div>
+          <h1>Download <span class="gradient-text">Endravo</span> and train with a plan.</h1>
           <p class="lead">
-            Build your plan, follow structured workouts, create routes, train with strength, and stay on top of recovery and sustainable weight loss—all in one clean app for runners and everyday athletes.
+            Stop switching between route builders, workout notes, strength plans, and recovery trackers. Endravo brings running, strength, routes, recovery, and weight-loss support into one focused app built for everyday athletes.
           </p>
           <div class="hero-actions">
-            <a class="btn btn-primary" href="https://apps.apple.com/" target="_blank" rel="noopener noreferrer"> Download on the App Store</a>
+            <a class="btn btn-primary" href="https://apps.apple.com/us/app/endravo/id6761561213" target="_blank" rel="noopener noreferrer"> Download Endravo</a>
             <a class="btn btn-secondary" href="#features">See Features</a>
           </div>
+          <p class="app-store-note">Get Endravo for iPhone from the App Store and start building smarter training today.</p>
           <div class="hero-stats">
             <div class="stat">
-              <strong>AI Plans</strong>
-              <span>Running, strength, or hybrid</span>
+              <strong>Plan your week</strong>
+              <span>Running, strength, or hybrid training</span>
             </div>
             <div class="stat">
-              <strong>Route Builder</strong>
+              <strong>Map better runs</strong>
               <span>Distance, elevation, and waypoints</span>
             </div>
             <div class="stat">
-              <strong>Apple Watch</strong>
-            <span>Track runs, recovery, and weight goals</span>
+              <strong>Stay consistent</strong>
+              <span>Track workouts, recovery, and weight goals</span>
             </div>
           </div>
         </div>
@@ -607,14 +641,14 @@
       <div class="container">
         <div class="section-title">
           <h2>Everything your training needs.</h2>
-          <p>Endravo combines the tools runners usually spread across multiple apps into one streamlined experience.</p>
+          <p>Download once and get the planning tools runners usually spread across multiple apps.</p>
         </div>
 
         <div class="features">
           <article class="card">
             <div class="icon-badge">🗺️</div>
             <h3>Route Planning</h3>
-            <p>Build routes with distance, elevation, and waypoints so your runs match your goals.</p>
+            <p>Build routes with distance, elevation, and waypoints so every run starts with purpose.</p>
           </article>
           <article class="card">
             <div class="icon-badge">🏃</div>
@@ -629,7 +663,7 @@
           <article class="card">
             <div class="icon-badge">🧠</div>
             <h3>Recovery Insights</h3>
-            <p>Use recovery signals, workload, and consistency to adjust training with more confidence.</p>
+            <p>Use recovery signals, workload, and consistency to know when to push and when to back off.</p>
           </article>
         </div>
       </div>
@@ -640,13 +674,13 @@
         <div class="card">
           <h3>AI-powered training plans</h3>
           <p>
-            Start from a plan that already considers your current fitness, recovery, and training load. Build for a race, general fitness, or a hybrid running-and-strength schedule.
+            Open Endravo and start from a plan that considers your current fitness, recovery, and training load. Build for a race, general fitness, or a hybrid running-and-strength schedule.
           </p>
         </div>
         <div class="card">
           <h3>Flexible for beginners to advanced runners</h3>
           <p>
-            Whether you are building consistency, getting ready for a 5K, or aiming for longer distances, Endravo helps you progress with structure instead of guesswork.
+            Whether you are building consistency, getting ready for a 5K, or aiming for longer distances, Endravo gives you a clear next step instead of another blank calendar.
           </p>
         </div>
       </div>
@@ -657,7 +691,7 @@
         <div class="card">
           <h3>Built for Apple Watch</h3>
           <p>
-            Take workouts, routes, and training guidance onto your wrist for a simpler run-day experience. Keep your plan and execution connected.
+            Take workouts, routes, and training guidance onto your wrist for a simpler run-day experience. Keep your plan and execution connected from phone to watch.
           </p>
         </div>
         <div class="card">
@@ -672,11 +706,16 @@
     <section class="cta" id="download">
       <div class="container">
         <div class="cta-box">
-          <h2>Train with one app instead of five.</h2>
+          <h2>Ready to train smarter?</h2>
           <p>
-            Download Endravo on the App Store and bring routes, workouts, strength, and recovery into one place.
+            Endravo is live on the App Store. Download it today and bring routes, workouts, strength, recovery, and weight-loss support into one place.
           </p>
-          <a class="btn btn-primary" href="https://apps.apple.com/" target="_blank" rel="noopener noreferrer">Download on the App Store</a>
+          <a class="btn btn-primary" href="https://apps.apple.com/us/app/endravo/id6761561213" target="_blank" rel="noopener noreferrer">Download on the App Store</a>
+          <ul class="download-proof" aria-label="Endravo App Store highlights">
+            <li>Made for iPhone</li>
+            <li>Built for runners and hybrid athletes</li>
+            <li>One place for plans, routes, and recovery</li>
+          </ul>
         </div>
       </div>
     </section>
@@ -684,7 +723,7 @@
 
   <footer>
     <div class="container">
-      <div>© 2026 Endravo. Replace the App Store link with your live app URL when ready.</div>
+      <div>© 2026 Endravo. Download Endravo today from the App Store.</div>
       <div class="footer-links">
         <a href="privacy-policy.html">Privacy Policy</a>
         <a href="copyright.html">Copyright</a>
