@@ -34,12 +34,14 @@
         radial-gradient(circle at top left, rgba(34,193,255,0.18), transparent 25%),
         linear-gradient(180deg, #0b1120 0%, #111827 100%);
       line-height: 1.5;
+      overflow-x: hidden;
     }
 
     a { color: inherit; text-decoration: none; }
 
     .container {
-      width: min(calc(100% - 32px), var(--max));
+      width: calc(100% - 32px);
+      max-width: var(--max);
       margin: 0 auto;
     }
 
@@ -116,6 +118,7 @@
       font-weight: 700;
       transition: 0.2s ease;
       cursor: pointer;
+      text-align: center;
     }
 
     .btn-primary {
@@ -146,6 +149,10 @@
       align-items: center;
     }
 
+    .hero-grid > * {
+      min-width: 0;
+    }
+
     .eyebrow {
       display: inline-flex;
       align-items: center;
@@ -164,6 +171,7 @@
       font-size: clamp(2.7rem, 6vw, 5.4rem);
       line-height: 0.98;
       letter-spacing: -0.05em;
+      overflow-wrap: anywhere;
     }
 
     .gradient-text {
@@ -178,6 +186,7 @@
       color: var(--muted);
       font-size: 1.12rem;
       max-width: 650px;
+      overflow-wrap: break-word;
     }
 
     .hero-actions {
@@ -205,6 +214,7 @@
       background: rgba(255,255,255,0.05);
       border: 1px solid var(--border);
       min-width: 150px;
+      max-width: 100%;
     }
 
     .stat strong {
@@ -515,11 +525,13 @@
       .nav-inner {
         flex-direction: column;
         align-items: flex-start;
+        gap: 14px;
       }
 
       .nav-links {
         flex-wrap: wrap;
         gap: 12px;
+        width: 100%;
       }
 
       .hero-grid,
@@ -528,13 +540,109 @@
         grid-template-columns: 1fr;
       }
 
-      .hero { padding-top: 42px; }
-      .phone-stack { min-height: 780px; }
-      .phone.one { transform: translate(0, 0) rotate(-4deg); top: 20px; }
-      .phone.two { top: 200px; }
-      .phone.three { transform: translate(0, 0) rotate(4deg); top: 380px; }
+      .hero {
+        padding: 36px 0 34px;
+      }
+
+      h1 {
+        font-size: clamp(2.35rem, 13vw, 3.9rem);
+        line-height: 1;
+      }
+
+      .lead {
+        font-size: 1rem;
+      }
+
+      .hero-actions {
+        display: grid;
+        grid-template-columns: 1fr;
+      }
+
+      .btn {
+        width: 100%;
+        min-height: 50px;
+      }
+
+      .phone-stack {
+        min-height: 560px;
+        margin-top: 18px;
+        overflow: hidden;
+      }
+
+      .phone {
+        width: 72vw;
+        max-width: 242px;
+      }
+
+      .phone.one {
+        top: 44px;
+        transform: translate(-58px, 0) rotate(-8deg) scale(0.88);
+      }
+
+      .phone.two {
+        top: 0;
+      }
+
+      .phone.three {
+        top: 82px;
+        transform: translate(58px, 0) rotate(8deg) scale(0.88);
+      }
+
       .hero-stats { display: grid; grid-template-columns: 1fr 1fr; }
       .cta-box { padding: 28px 20px; }
+    }
+
+    @media (max-width: 560px) {
+      .container {
+        width: calc(100% - 24px);
+      }
+
+      .nav-links {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .nav-links a {
+        text-align: center;
+      }
+
+      .nav-links .nav-download {
+        grid-column: 1 / -1;
+      }
+
+      .eyebrow {
+        align-items: flex-start;
+        border-radius: 18px;
+      }
+
+      .hero-stats {
+        grid-template-columns: 1fr;
+      }
+
+      .stat {
+        min-width: 0;
+      }
+
+      .phone-stack {
+        min-height: 520px;
+      }
+
+      .screen {
+        padding: 66px 15px 16px;
+      }
+
+      .screen h3 {
+        font-size: 1.5rem;
+      }
+
+      .map-box {
+        min-height: 180px;
+      }
+
+      .download-proof {
+        display: grid;
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
