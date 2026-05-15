@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Endravo — Run Smarter. Train Stronger.</title>
-  <meta name="description" content="Download Endravo on the App Store to plan runs, build routes, train strength, and track recovery in one focused fitness app." />
+  <title>Endravo — Running Plans, Routes, Strength, and Recovery</title>
+  <meta name="description" content="Download Endravo on the App Store to plan smarter training weeks with running plans, route building, strength workouts, recovery, and weight-loss support." />
   <link rel="icon" href="icon.png" type="image/png" />
   <style>
     :root {
@@ -202,6 +202,27 @@
       margin: 0 0 24px;
     }
 
+    .hero-proof {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin: -6px 0 26px;
+      padding: 0;
+      list-style: none;
+      color: #e2e8f0;
+      font-size: 0.94rem;
+    }
+
+    .hero-proof li {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 8px 11px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid var(--border);
+    }
+
     .hero-stats {
       display: flex;
       gap: 14px;
@@ -380,6 +401,34 @@
       padding: 36px 0 18px;
     }
 
+    .ad-strip {
+      padding: 10px 0 34px;
+    }
+
+    .ad-strip-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+
+    .ad-strip-item {
+      padding: 18px;
+      border-radius: 20px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid var(--border);
+    }
+
+    .ad-strip-item strong {
+      display: block;
+      font-size: 1rem;
+      margin-bottom: 5px;
+    }
+
+    .ad-strip-item span {
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
     .section-title {
       text-align: center;
       max-width: 760px;
@@ -477,6 +526,10 @@
       font-size: 0.95rem;
     }
 
+    .mobile-download-bar {
+      display: none;
+    }
+
     .footer-links {
       display: flex;
       align-items: center;
@@ -511,7 +564,8 @@
     @media (max-width: 1080px) {
       .hero-grid,
       .split,
-      .features {
+      .features,
+      .ad-strip-grid {
         grid-template-columns: 1fr 1fr;
       }
 
@@ -522,6 +576,10 @@
     }
 
     @media (max-width: 760px) {
+      body {
+        padding-bottom: 82px;
+      }
+
       .nav-inner {
         flex-direction: column;
         align-items: flex-start;
@@ -536,7 +594,8 @@
 
       .hero-grid,
       .split,
-      .features {
+      .features,
+      .ad-strip-grid {
         grid-template-columns: 1fr;
       }
 
@@ -554,6 +613,11 @@
       }
 
       .hero-actions {
+        display: grid;
+        grid-template-columns: 1fr;
+      }
+
+      .hero-proof {
         display: grid;
         grid-template-columns: 1fr;
       }
@@ -590,6 +654,23 @@
 
       .hero-stats { display: grid; grid-template-columns: 1fr 1fr; }
       .cta-box { padding: 28px 20px; }
+
+      .mobile-download-bar {
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 30;
+        display: block;
+        padding: 12px 16px calc(12px + env(safe-area-inset-bottom));
+        background: rgba(10,15,28,0.9);
+        backdrop-filter: blur(18px);
+        border-top: 1px solid rgba(255,255,255,0.12);
+      }
+
+      .mobile-download-bar .btn {
+        box-shadow: 0 12px 28px rgba(255, 138, 31, 0.32);
+      }
     }
 
     @media (max-width: 560px) {
@@ -597,17 +678,24 @@
         width: calc(100% - 24px);
       }
 
-      .nav-links {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
+      .nav-inner {
+        flex-direction: row;
+        align-items: center;
       }
 
-      .nav-links a {
-        text-align: center;
+      .nav-links {
+        display: flex;
+        width: auto;
+        margin-left: auto;
+      }
+
+      .nav-links a:not(.nav-download) {
+        display: none;
       }
 
       .nav-links .nav-download {
-        grid-column: 1 / -1;
+        padding: 9px 13px;
+        white-space: nowrap;
       }
 
       .eyebrow {
@@ -643,6 +731,10 @@
         display: grid;
         grid-template-columns: 1fr;
       }
+
+      footer {
+        padding-bottom: 28px;
+      }
     }
   </style>
 </head>
@@ -667,26 +759,31 @@
       <div class="container hero-grid">
         <div>
           <div class="eyebrow">🏃 Available now on the App Store</div>
-          <h1>Download <span class="gradient-text">Endravo</span> and train with a plan.</h1>
+          <h1>Your running plan, routes, strength, and recovery in <span class="gradient-text">one app</span>.</h1>
           <p class="lead">
-            Stop switching between route builders, workout notes, strength plans, and recovery trackers. Endravo brings running, strength, routes, recovery, and weight-loss support into one focused app built for everyday athletes.
+            Endravo helps you build smarter training weeks with route planning, structured workouts, strength sessions, recovery support, and weight-loss tools made for everyday athletes.
           </p>
           <div class="hero-actions">
-            <a class="btn btn-primary" href="https://apps.apple.com/us/app/endravo/id6761561213" target="_blank" rel="noopener noreferrer"> Download Endravo</a>
+            <a class="btn btn-primary" href="https://apps.apple.com/us/app/endravo/id6761561213" target="_blank" rel="noopener noreferrer"> Download on the App Store</a>
             <a class="btn btn-secondary" href="#features">See Features</a>
           </div>
-          <p class="app-store-note">Get Endravo for iPhone from the App Store and start building smarter training today.</p>
+          <p class="app-store-note">Get Endravo for iPhone and start building smarter training today.</p>
+          <ul class="hero-proof" aria-label="Endravo download benefits">
+            <li>✓ Made for iPhone</li>
+            <li>✓ Built for runners</li>
+            <li>✓ Routes, workouts, and recovery together</li>
+          </ul>
           <div class="hero-stats">
             <div class="stat">
-              <strong>Plan your week</strong>
+              <strong>Plan the week</strong>
               <span>Running, strength, or hybrid training</span>
             </div>
             <div class="stat">
-              <strong>Map better runs</strong>
+              <strong>Build better routes</strong>
               <span>Distance, elevation, and waypoints</span>
             </div>
             <div class="stat">
-              <strong>Stay consistent</strong>
+              <strong>Recover smarter</strong>
               <span>Track workouts, recovery, and weight goals</span>
             </div>
           </div>
@@ -745,28 +842,45 @@
       </div>
     </section>
 
+    <section class="ad-strip" aria-label="Why download Endravo">
+      <div class="container ad-strip-grid">
+        <div class="ad-strip-item">
+          <strong>Know what to do next</strong>
+          <span>Turn scattered training ideas into a clearer week.</span>
+        </div>
+        <div class="ad-strip-item">
+          <strong>Run with a route ready</strong>
+          <span>Plan distance, elevation, and waypoints before you head out.</span>
+        </div>
+        <div class="ad-strip-item">
+          <strong>Train beyond the run</strong>
+          <span>Add strength, recovery, and weight-loss support in the same app.</span>
+        </div>
+      </div>
+    </section>
+
     <section class="section" id="features">
       <div class="container">
         <div class="section-title">
-          <h2>Everything your training needs.</h2>
-          <p>Download once and get the planning tools runners usually spread across multiple apps.</p>
+          <h2>Why runners download Endravo.</h2>
+          <p>One focused place for the training decisions that happen before, during, and after every run.</p>
         </div>
 
         <div class="features">
           <article class="card">
             <div class="icon-badge">🗺️</div>
             <h3>Route Planning</h3>
-            <p>Build routes with distance, elevation, and waypoints so every run starts with purpose.</p>
+            <p>Build routes with distance, elevation, and waypoints so every run starts with a clear target.</p>
           </article>
           <article class="card">
             <div class="icon-badge">🏃</div>
             <h3>Structured Workouts</h3>
-            <p>Create intervals, tempo runs, easy days, and sessions that fit your current fitness.</p>
+            <p>Create intervals, tempo runs, easy days, and sessions that match your current fitness.</p>
           </article>
           <article class="card">
             <div class="icon-badge">⚖️</div>
             <h3>Weight Loss Support</h3>
-            <p>Build calorie-smart plans, workouts, and recovery routines designed for sustainable fat loss and improved fitness.</p>
+            <p>Build calorie-smart plans and routines designed for sustainable fat loss and better fitness.</p>
           </article>
           <article class="card">
             <div class="icon-badge">🧠</div>
@@ -782,13 +896,13 @@
         <div class="card">
           <h3>AI-powered training plans</h3>
           <p>
-            Open Endravo and start from a plan that considers your current fitness, recovery, and training load. Build for a race, general fitness, or a hybrid running-and-strength schedule.
+            Open Endravo and start from a plan that considers your current fitness, recovery, and training load. Build toward a race, general fitness, or a hybrid running-and-strength schedule.
           </p>
         </div>
         <div class="card">
-          <h3>Flexible for beginners to advanced runners</h3>
+          <h3>Simple enough to start today</h3>
           <p>
-            Whether you are building consistency, getting ready for a 5K, or aiming for longer distances, Endravo gives you a clear next step instead of another blank calendar.
+            Whether you are building consistency, getting ready for a 5K, or aiming longer, Endravo gives you a clear next step instead of another blank calendar.
           </p>
         </div>
       </div>
@@ -816,7 +930,7 @@
         <div class="cta-box">
           <h2>Ready to train smarter?</h2>
           <p>
-            Endravo is live on the App Store. Download it today and bring routes, workouts, strength, recovery, and weight-loss support into one place.
+            Endravo is live on the App Store. Download it today and bring your routes, workouts, strength, recovery, and weight-loss support into one place.
           </p>
           <a class="btn btn-primary" href="https://apps.apple.com/us/app/endravo/id6761561213" target="_blank" rel="noopener noreferrer">Download on the App Store</a>
           <ul class="download-proof" aria-label="Endravo App Store highlights">
@@ -840,6 +954,10 @@
       </div>
     </div>
   </footer>
+
+  <div class="mobile-download-bar" aria-label="Download Endravo">
+    <a class="btn btn-primary" href="https://apps.apple.com/us/app/endravo/id6761561213" target="_blank" rel="noopener noreferrer">Download Endravo</a>
+  </div>
 
   <script>
     function openTerms() {
