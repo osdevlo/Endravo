@@ -3,21 +3,24 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Endravo - Free Running Plans, Routes, Strength, and Recovery</title>
-  <meta name="description" content="Download Endravo free on the App Store. Build smarter training weeks with running plans, route building, strength workouts, recovery, and weight-loss support." />
+  <title>Endravo - Training Planning for Running, Strength, Recovery, and Routes</title>
+  <meta name="description" content="Endravo brings running plans, route planning, strength work, recovery context, Apple Watch support, and web dashboard planning into one training system." />
   <link rel="icon" href="icon.png" type="image/png" />
   <style>
     :root {
-      --bg: #07111f;
-      --bg-soft: #0f1b2d;
-      --card: rgba(255,255,255,0.075);
-      --text: #f8fafc;
-      --muted: #c9d6e7;
-      --accent: #ff7a21;
-      --accent-2: #0fb981;
-      --accent-3: #2d7ff9;
-      --border: rgba(255,255,255,0.14);
-      --shadow: 0 20px 50px rgba(3,7,18,0.36);
+      --bg: #f7f8f6;
+      --surface: #ffffff;
+      --surface-strong: #111417;
+      --surface-muted: #eef1ed;
+      --text: #151a1f;
+      --muted: #5d6670;
+      --soft: #7a858f;
+      --line: #d9ded8;
+      --line-dark: rgba(255, 255, 255, 0.14);
+      --green: #1d7f5c;
+      --orange: #d96d2d;
+      --blue: #276fbf;
+      --shadow: 0 24px 70px rgba(20, 25, 30, 0.12);
       --radius: 8px;
       --max: 1180px;
     }
@@ -28,21 +31,16 @@
 
     body {
       margin: 0;
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       color: var(--text);
-      background:
-        linear-gradient(135deg, rgba(15,185,129,0.16), transparent 32%),
-        linear-gradient(225deg, rgba(255,122,33,0.22), transparent 30%),
-        linear-gradient(180deg, #07111f 0%, #0f1b2d 48%, #121827 100%);
+      background: var(--bg);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       line-height: 1.5;
-      overflow-x: hidden;
     }
 
     a { color: inherit; text-decoration: none; }
 
     .container {
-      width: calc(100% - 32px);
-      max-width: var(--max);
+      width: min(calc(100% - 32px), var(--max));
       margin: 0 auto;
     }
 
@@ -50,649 +48,950 @@
       position: sticky;
       top: 0;
       z-index: 20;
+      background: rgba(247, 248, 246, 0.9);
+      border-bottom: 1px solid rgba(21, 26, 31, 0.08);
       backdrop-filter: blur(16px);
-      background: rgba(7, 17, 31, 0.8);
-      border-bottom: 1px solid rgba(255,255,255,0.08);
     }
 
     .nav-inner {
+      min-height: 72px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 16px 0;
-      gap: 20px;
+      gap: 24px;
     }
 
     .brand {
-      display: flex;
+      display: inline-flex;
       align-items: center;
       gap: 12px;
-      font-weight: 800;
-      letter-spacing: -0.03em;
-      font-size: 1.15rem;
+      font-size: 1.05rem;
+      font-weight: 760;
+      letter-spacing: 0;
     }
 
     .logo {
-      width: 42px;
-      height: 42px;
-      border-radius: 14px;
-      display: grid;
-      place-items: center;
-      background: linear-gradient(135deg, var(--accent-2), var(--accent-3), var(--accent));
-      box-shadow: var(--shadow);
+      width: 38px;
+      height: 38px;
+      border-radius: var(--radius);
       overflow: hidden;
+      background: #111417;
+      box-shadow: 0 12px 28px rgba(17, 20, 23, 0.14);
+      flex: 0 0 auto;
     }
 
     .logo img {
+      display: block;
       width: 100%;
       height: 100%;
       object-fit: cover;
-      display: block;
     }
 
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 22px;
+      gap: 24px;
       color: var(--muted);
-      font-size: 0.95rem;
+      font-size: 0.94rem;
+      white-space: nowrap;
     }
 
     .nav-links a:hover { color: var(--text); }
 
-    .nav-links .nav-download,
-    .nav-links .nav-dashboard {
-      color: white;
-      border: 1px solid rgba(255,255,255,0.18);
-      border-radius: 999px;
-      padding: 8px 12px;
-    }
-
-    .nav-links .nav-dashboard {
-      background: rgba(45,127,249,0.18);
-      border-color: rgba(45,127,249,0.46);
-    }
-
-    .nav-links .nav-download {
-      background: rgba(255,122,33,0.2);
-      border-color: rgba(255,122,33,0.5);
+    .nav-cta {
+      color: #ffffff;
+      background: var(--surface-strong);
+      border: 1px solid var(--surface-strong);
+      border-radius: var(--radius);
+      padding: 10px 14px;
+      font-weight: 700;
     }
 
     .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 10px;
-      padding: 14px 22px;
-      border-radius: 999px;
+      min-height: 48px;
+      padding: 13px 18px;
       border: 1px solid transparent;
-      font-weight: 700;
-      transition: 0.2s ease;
-      cursor: pointer;
+      border-radius: var(--radius);
+      font-weight: 760;
+      transition: transform 0.18s ease, border-color 0.18s ease, background 0.18s ease;
       text-align: center;
     }
 
-    .btn-primary {
-      background: linear-gradient(135deg, var(--accent), #ff5a1f);
-      color: white;
-      box-shadow: 0 14px 30px rgba(255, 138, 31, 0.28);
-    }
+    .btn:hover { transform: translateY(-1px); }
 
-    .btn-primary:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 18px 35px rgba(255, 138, 31, 0.35);
+    .btn-primary {
+      color: #ffffff;
+      background: var(--surface-strong);
+      border-color: var(--surface-strong);
+      box-shadow: 0 16px 34px rgba(17, 20, 23, 0.16);
     }
 
     .btn-secondary {
-      background: rgba(255,255,255,0.05);
-      border-color: var(--border);
       color: var(--text);
+      background: transparent;
+      border-color: var(--line);
     }
 
-    .btn-dashboard {
-      background: rgba(45,127,249,0.12);
-      border-color: rgba(45,127,249,0.48);
-      color: var(--text);
-    }
+    .btn-secondary:hover { border-color: #aeb7ae; }
 
     .hero {
-      padding: 72px 0 52px;
+      padding: 76px 0 56px;
+      border-bottom: 1px solid var(--line);
     }
 
     .hero-grid {
       display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 38px;
+      grid-template-columns: minmax(0, 0.92fr) minmax(390px, 1.08fr);
+      gap: 44px;
       align-items: center;
-    }
-
-    .hero-grid > * {
-      min-width: 0;
     }
 
     .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 8px 12px;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.06);
-      border: 1px solid var(--border);
-      color: #fde68a;
-      font-size: 0.9rem;
-      margin-bottom: 18px;
+      margin: 0 0 18px;
+      color: var(--green);
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
     }
 
     h1 {
-      margin: 0 0 18px;
-      font-size: clamp(2.7rem, 6vw, 5.4rem);
-      line-height: 0.98;
-      letter-spacing: -0.05em;
-      overflow-wrap: anywhere;
-    }
-
-    .gradient-text {
-      background: linear-gradient(135deg, #ffffff 10%, #90f0c8 40%, #ffb067 74%, #73b6ff 100%);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-
-    .mobile-break {
-      display: none;
+      margin: 0;
+      max-width: 780px;
+      font-size: clamp(3rem, 5.9vw, 5.35rem);
+      line-height: 1;
+      letter-spacing: 0;
+      text-wrap: balance;
     }
 
     .lead {
-      margin: 0 0 28px;
+      max-width: 680px;
+      margin: 26px 0 0;
       color: var(--muted);
-      font-size: 1.12rem;
-      max-width: 650px;
-      overflow-wrap: break-word;
+      font-size: clamp(1.05rem, 1.4vw, 1.2rem);
     }
 
     .hero-actions {
       display: flex;
-      gap: 14px;
       flex-wrap: wrap;
-      margin-bottom: 12px;
+      gap: 12px;
+      margin-top: 32px;
     }
 
-    .cta-actions {
-      justify-content: center;
-      margin-bottom: 0;
-    }
-
-    .app-store-note {
-      color: #e2e8f0;
-      font-size: 0.95rem;
-      margin: 0 0 24px;
-    }
-
-    .free-note {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      color: #dcfce7;
-      background: rgba(15,185,129,0.12);
-      border: 1px solid rgba(15,185,129,0.36);
-      border-radius: 999px;
-      padding: 8px 12px;
-      font-weight: 800;
-      margin: 0 0 18px;
-    }
-
-    .hero-proof {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin: -6px 0 26px;
-      padding: 0;
-      list-style: none;
-      color: #e2e8f0;
-      font-size: 0.94rem;
-    }
-
-    .hero-proof li {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      padding: 8px 11px;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.06);
-      border: 1px solid var(--border);
-    }
-
-    .hero-stats {
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
-    }
-
-    .stat {
-      padding: 14px 16px;
+    .trust-row {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1px;
+      margin-top: 42px;
+      border: 1px solid var(--line);
+      background: var(--line);
       border-radius: var(--radius);
-      background: rgba(255,255,255,0.05);
-      border: 1px solid var(--border);
-      min-width: 150px;
-      max-width: 100%;
+      overflow: hidden;
+      max-width: 760px;
     }
 
-    .stat strong {
+    .trust-item {
+      background: rgba(255, 255, 255, 0.64);
+      padding: 18px;
+    }
+
+    .trust-item strong {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 0.98rem;
+    }
+
+    .trust-item span {
+      display: block;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .hero-visual {
+      position: relative;
+      min-height: 680px;
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid rgba(21, 26, 31, 0.14);
+      background: #161a1d;
+      box-shadow: var(--shadow);
+      isolation: isolate;
+    }
+
+    .hero-visual img {
+      width: 100%;
+      height: 100%;
+      min-height: 680px;
+      display: block;
+      object-fit: cover;
+      object-position: 56% center;
+      transform: scale(1.01);
+    }
+
+    .hero-visual::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(17, 20, 23, 0.02), rgba(17, 20, 23, 0.72)),
+        linear-gradient(90deg, rgba(17, 20, 23, 0.18), transparent 45%);
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .hero-caption {
+      position: absolute;
+      left: 18px;
+      right: 18px;
+      bottom: 18px;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 18px;
+      align-items: end;
+      padding: 18px;
+      border-radius: var(--radius);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      background: rgba(17, 20, 23, 0.58);
+      color: #ffffff;
+      backdrop-filter: blur(12px);
+    }
+
+    .hero-caption strong {
+      display: block;
+      margin-bottom: 5px;
+      font-size: 1rem;
+    }
+
+    .hero-caption span {
+      display: block;
+      color: #d6dde2;
+      font-size: 0.9rem;
+    }
+
+    .hero-caption .pulse {
+      display: grid;
+      place-items: center;
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      background: rgba(217, 109, 45, 0.22);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      font-weight: 860;
+      font-size: 0.9rem;
+    }
+
+    .product-panel {
+      background: var(--surface-strong);
+      border: 1px solid #22282d;
+      border-radius: 18px;
+      padding: 18px;
+      box-shadow: var(--shadow);
+      color: #ffffff;
+    }
+
+    .product-shell {
+      overflow: hidden;
+      border: 1px solid var(--line-dark);
+      border-radius: 12px;
+      background: #181d21;
+    }
+
+    .product-topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--line-dark);
+      color: #cbd3d8;
+      font-size: 0.86rem;
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #36c280;
+      box-shadow: 0 0 0 4px rgba(54, 194, 128, 0.14);
+    }
+
+    .product-body {
+      display: grid;
+      grid-template-columns: 0.92fr 1.08fr;
+      min-height: 520px;
+    }
+
+    .week-plan {
+      padding: 18px;
+      border-right: 1px solid var(--line-dark);
+      background: #14191d;
+    }
+
+    .module-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+      color: #e8ecef;
+      font-size: 0.9rem;
+      font-weight: 760;
+    }
+
+    .module-title span {
+      color: #8f9aa2;
+      font-weight: 640;
+    }
+
+    .session-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    .session {
+      display: grid;
+      gap: 5px;
+      padding: 13px;
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.045);
+    }
+
+    .session strong {
+      font-size: 0.94rem;
+      color: #ffffff;
+    }
+
+    .session span {
+      color: #9faab1;
+      font-size: 0.82rem;
+    }
+
+    .session.active {
+      border-color: rgba(54, 194, 128, 0.45);
+      background: rgba(54, 194, 128, 0.12);
+    }
+
+    .route-card {
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      background: #1c2227;
+    }
+
+    .map {
+      position: relative;
+      min-height: 242px;
+      border: 1px solid var(--line-dark);
+      border-radius: var(--radius);
+      overflow: hidden;
+      background:
+        linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+        #242b31;
+      background-size: 34px 34px;
+    }
+
+    .route-path {
+      position: absolute;
+      inset: 26px 24px;
+      border: 3px solid transparent;
+      border-left-color: #36c280;
+      border-bottom-color: #36c280;
+      border-radius: 44% 20% 48% 24%;
+      transform: rotate(-13deg);
+    }
+
+    .route-path::before,
+    .route-path::after {
+      content: "";
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+
+    .route-path::before {
+      left: -7px;
+      bottom: -7px;
+      background: #36c280;
+    }
+
+    .route-path::after {
+      right: 22px;
+      top: 12px;
+      background: var(--orange);
+    }
+
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+
+    .metric {
+      padding: 13px;
+      border: 1px solid var(--line-dark);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    .metric strong {
       display: block;
       font-size: 1.15rem;
-      margin-bottom: 4px;
+      margin-bottom: 2px;
     }
 
-    .stat span {
+    .metric span {
+      color: #9faab1;
+      font-size: 0.78rem;
+    }
+
+    .image-story {
+      display: grid;
+      grid-template-columns: 0.92fr 1.08fr;
+      gap: 14px;
+      margin-top: 14px;
+    }
+
+    .story-photo {
+      min-height: 360px;
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid var(--line);
+      background: #101417;
+      position: relative;
+    }
+
+    .story-photo img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      min-height: 360px;
+      object-fit: cover;
+    }
+
+    .story-copy {
+      padding: 30px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+
+    .story-copy h3 {
+      margin: 0 0 12px;
+      font-size: clamp(1.8rem, 3vw, 2.7rem);
+      line-height: 1.06;
+    }
+
+    .story-copy p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 1.02rem;
+    }
+
+    .section {
+      padding: 76px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .section-heading {
+      max-width: 760px;
+      margin-bottom: 34px;
+    }
+
+    .section-heading.center {
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+    }
+
+    .section-heading.spaced {
+      margin-top: 58px;
+    }
+
+    .section-kicker {
+      margin: 0 0 10px;
+      color: var(--orange);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: clamp(2rem, 4vw, 3.35rem);
+      line-height: 1.03;
+      letter-spacing: 0;
+      text-wrap: balance;
+    }
+
+    .section-heading p {
+      margin: 16px 0 0;
+      color: var(--muted);
+      font-size: 1.04rem;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .feature {
+      min-height: 250px;
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface);
+    }
+
+    .feature-mark {
+      width: 38px;
+      height: 38px;
+      margin-bottom: 34px;
+      border-radius: var(--radius);
+      background: var(--surface-muted);
+      border: 1px solid var(--line);
+      position: relative;
+    }
+
+    .feature-mark::after {
+      content: "";
+      position: absolute;
+      inset: 10px;
+      border-radius: 50%;
+      background: var(--green);
+    }
+
+    .feature:nth-child(2) .feature-mark::after { background: var(--blue); }
+    .feature:nth-child(3) .feature-mark::after { background: var(--orange); }
+    .feature:nth-child(4) .feature-mark::after { background: #5b6470; }
+
+    .feature h3 {
+      margin: 0 0 10px;
+      font-size: 1.12rem;
+    }
+
+    .feature p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+
+    .capability-list {
+      display: grid;
+      grid-template-columns: 0.86fr 1.14fr;
+      gap: 14px;
+      margin-top: 14px;
+    }
+
+    .capability-lead,
+    .capability-table {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface);
+    }
+
+    .capability-lead {
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 360px;
+      background:
+        linear-gradient(135deg, rgba(29, 127, 92, 0.1), transparent 42%),
+        var(--surface);
+    }
+
+    .capability-lead h3 {
+      margin: 0;
+      font-size: clamp(1.75rem, 3vw, 2.55rem);
+      line-height: 1.06;
+    }
+
+    .capability-lead p {
+      margin: 16px 0 0;
+      color: var(--muted);
+      font-size: 1.02rem;
+    }
+
+    .capability-note {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 28px;
+    }
+
+    .capability-note span {
+      padding: 12px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      color: var(--muted);
+      background: rgba(247, 248, 246, 0.72);
+      font-size: 0.9rem;
+      font-weight: 700;
+    }
+
+    .capability-table {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      overflow: hidden;
+      background: var(--line);
+      gap: 1px;
+    }
+
+    .capability-item {
+      padding: 18px;
+      background: var(--surface);
+    }
+
+    .capability-item strong {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 1rem;
+    }
+
+    .capability-item span {
+      display: block;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .workflow {
+      display: grid;
+      grid-template-columns: 0.85fr 1.15fr;
+      gap: 28px;
+      align-items: stretch;
+    }
+
+    .workflow-card {
+      padding: 28px;
+      border-radius: var(--radius);
+      border: 1px solid var(--line);
+      background: var(--surface);
+    }
+
+    .workflow-card.dark {
+      color: #ffffff;
+      background: var(--surface-strong);
+      border-color: var(--surface-strong);
+    }
+
+    .workflow-card h3 {
+      margin: 0 0 12px;
+      font-size: 1.45rem;
+    }
+
+    .workflow-card p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .workflow-card.dark p { color: #b9c1c8; }
+
+    .timeline {
+      display: grid;
+      gap: 1px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--line);
+    }
+
+    .timeline-row {
+      display: grid;
+      grid-template-columns: 90px 1fr 120px;
+      gap: 18px;
+      align-items: center;
+      padding: 18px;
+      background: var(--surface);
+    }
+
+    .timeline-row strong {
+      font-size: 0.98rem;
+    }
+
+    .timeline-row span {
       color: var(--muted);
       font-size: 0.94rem;
     }
 
-    .download-proof {
-      display: flex;
-      justify-content: center;
-      gap: 14px;
-      flex-wrap: wrap;
-      margin: 24px 0 0;
-      padding: 0;
-      list-style: none;
-      color: #e2e8f0;
-      font-size: 0.95rem;
-    }
-
-    .download-proof li {
-      padding: 9px 13px;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.06);
-      border: 1px solid var(--border);
-    }
-
-    .phone-stack {
-      position: relative;
-      min-height: 560px;
-      display: grid;
-      place-items: center;
-    }
-
-    .phone {
-      position: absolute;
-      width: 270px;
-      max-width: 75%;
-      aspect-ratio: 9 / 19.5;
-      border-radius: 36px;
-      border: 10px solid #111;
-      background: linear-gradient(180deg, #f8fafc, #e5e7eb);
-      overflow: hidden;
-      box-shadow: var(--shadow);
-    }
-
-    .phone::before {
-      content: "";
-      position: absolute;
-      top: 10px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 38%;
-      height: 22px;
-      background: #000;
-      border-radius: 999px;
-      z-index: 5;
-    }
-
-    .phone.one { transform: translate(-120px, 25px) rotate(-8deg); }
-    .phone.two { z-index: 3; }
-    .phone.three { transform: translate(120px, 25px) rotate(8deg); }
-
-    .screen {
-      padding: 72px 18px 18px;
-      height: 100%;
-      color: #111827;
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-      background: linear-gradient(180deg, #ffffff 0%, #f3f4f6 100%);
-    }
-
-    .screen.dark {
-      color: white;
-      background: linear-gradient(180deg, #111827 0%, #0b1120 100%);
-    }
-
-    .mini-label {
-      color: #f97316;
-      font-weight: 800;
-      font-size: 0.86rem;
-    }
-
-    .screen h3 {
-      margin: 0;
-      font-size: 1.8rem;
-      line-height: 1.05;
-      letter-spacing: -0.04em;
-    }
-
-    .muted {
-      color: #6b7280;
-      font-size: 0.95rem;
-    }
-
-    .dark .muted { color: #94a3b8; }
-
-    .chip {
-      padding: 8px 10px;
-      border-radius: 999px;
-      background: rgba(249,115,22,0.12);
-      color: #ea580c;
-      display: inline-flex;
-      width: fit-content;
-      font-weight: 700;
-      font-size: 0.82rem;
-    }
-
-    .list { margin: 0; padding-left: 18px; color: #374151; }
-    .dark .list { color: #cbd5e1; }
-
-    .map-box {
-      flex: 1;
-      border-radius: 12px;
-      background:
-        linear-gradient(0deg, rgba(255,255,255,0.02), rgba(255,255,255,0.02)),
-        linear-gradient(135deg, #f8fafc, #dbeafe);
-      position: relative;
-      overflow: hidden;
-      min-height: 220px;
-    }
-
-    .map-box::before,
-    .map-box::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background-image:
-        linear-gradient(rgba(148,163,184,0.25) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(148,163,184,0.25) 1px, transparent 1px);
-      background-size: 34px 34px;
-    }
-
-    .route-line {
-      position: absolute;
-      inset: 18% 12% 20% 12%;
-      z-index: 2;
-    }
-
-    .route-line svg {
-      width: 100%;
-      height: 100%;
-    }
-
-    .graph {
-      height: 72px;
+    .tag {
+      justify-self: end;
+      padding: 7px 10px;
+      color: var(--green);
+      background: rgba(29, 127, 92, 0.08);
+      border: 1px solid rgba(29, 127, 92, 0.2);
       border-radius: var(--radius);
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.08);
-      position: relative;
-      overflow: hidden;
+      font-size: 0.78rem;
+      font-weight: 760;
     }
 
-    .graph svg { width: 100%; height: 100%; }
-
-    .section {
-      padding: 36px 0 18px;
+    .platform {
+      background: #ecefeb;
     }
 
-    .ad-strip {
-      padding: 10px 0 34px;
-    }
-
-    .ad-strip-grid {
+    .platform-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 14px;
     }
 
-    .ad-strip-item {
-      padding: 18px;
-      border-radius: var(--radius);
-      background: rgba(255,255,255,0.06);
-      border: 1px solid var(--border);
-    }
-
-    .ad-strip-item strong {
-      display: block;
-      font-size: 1rem;
-      margin-bottom: 5px;
-    }
-
-    .ad-strip-item span {
-      color: var(--muted);
-      font-size: 0.94rem;
-    }
-
-    .section-title {
-      text-align: center;
-      max-width: 760px;
-      margin: 0 auto 26px;
-    }
-
-    .section-title h2 {
-      margin: 0 0 12px;
-      font-size: clamp(2rem, 4vw, 3rem);
-      letter-spacing: -0.04em;
-    }
-
-    .section-title p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 1.06rem;
-    }
-
-    .features {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 18px;
-      margin-top: 24px;
-    }
-
-    .card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 22px;
-      box-shadow: var(--shadow);
-    }
-
-    .icon-badge {
-      width: 54px;
-      height: 54px;
-      border-radius: var(--radius);
-      display: grid;
-      place-items: center;
-      background: rgba(255,255,255,0.08);
-      font-size: 1.4rem;
+    .platform-photo {
       margin-bottom: 14px;
+      min-height: 380px;
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid var(--line);
+      background: #111417;
+      box-shadow: var(--shadow);
     }
 
-    .card h3 {
+    .platform-photo img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      min-height: 380px;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .platform-card {
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.72);
+    }
+
+    .platform-card h3 {
       margin: 0 0 10px;
-      font-size: 1.2rem;
+      font-size: 1.16rem;
     }
 
-    .card p {
+    .platform-card p {
       margin: 0;
       color: var(--muted);
     }
 
-    .split {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 22px;
-      margin-top: 28px;
+    .privacy-band {
+      padding: 18px 0;
+      border-bottom: 1px solid var(--line);
+      background: var(--surface);
     }
 
-    .cta {
-      padding: 60px 0 80px;
-    }
-
-    .cta-box {
-      border-radius: 12px;
-      padding: 38px;
-      text-align: center;
-      background:
-        linear-gradient(135deg, rgba(15,185,129,0.18), transparent 32%),
-        linear-gradient(225deg, rgba(255,122,33,0.22), transparent 35%),
-        rgba(255,255,255,0.05);
-      border: 1px solid var(--border);
-      box-shadow: var(--shadow);
-    }
-
-    .cta-box h2 {
-      margin: 0 0 12px;
-      font-size: clamp(2rem, 4vw, 3.1rem);
-      letter-spacing: -0.04em;
-    }
-
-    .cta-box p {
-      margin: 0 auto 24px;
-      max-width: 700px;
+    .privacy-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
       color: var(--muted);
-      font-size: 1.04rem;
-    }
-
-    footer {
-      padding: 20px 0 40px;
-      color: var(--muted);
-      text-align: center;
       font-size: 0.95rem;
     }
 
-    .mobile-download-bar {
-      display: none;
+    .privacy-inner strong {
+      color: var(--text);
+    }
+
+    .privacy-inner a {
+      color: var(--text);
+      font-weight: 760;
+    }
+
+    .cta {
+      padding: 86px 0;
+      color: #ffffff;
+      background: var(--surface-strong);
+    }
+
+    .cta-inner {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 28px;
+      align-items: end;
+    }
+
+    .cta h2 {
+      max-width: 800px;
+    }
+
+    .cta p {
+      max-width: 680px;
+      margin: 18px 0 0;
+      color: #bac2c9;
+      font-size: 1.04rem;
+    }
+
+    .cta-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 12px;
+    }
+
+    .cta .btn-primary {
+      color: var(--text);
+      background: #ffffff;
+      border-color: #ffffff;
+      box-shadow: none;
+    }
+
+    .cta .btn-secondary {
+      color: #ffffff;
+      border-color: rgba(255, 255, 255, 0.22);
+    }
+
+    footer {
+      padding: 26px 0 38px;
+      color: var(--muted);
+      background: var(--surface-strong);
+      font-size: 0.92rem;
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      flex-wrap: wrap;
     }
 
     .footer-links {
       display: flex;
       align-items: center;
-      justify-content: center;
-      gap: 24px;
-      margin-top: 12px;
+      gap: 18px;
       flex-wrap: wrap;
     }
 
-    .footer-links a {
-      font-size: 0.9rem;
-      color: var(--muted);
-      transition: color 0.2s ease;
-    }
+    .footer-links a:hover { color: #ffffff; }
 
-    .footer-links a:hover {
-      color: var(--text);
-    }
+    .mobile-download-bar { display: none; }
 
-
-
-    @media (max-width: 760px) {
-      .modal-content {
-        padding: 24px;
-      }
-
-      .footer-links {
-        gap: 12px;
-      }
-    }
-
-    @media (max-width: 1080px) {
+    @media (max-width: 1060px) {
       .hero-grid,
-      .split,
-      .features,
-      .ad-strip-grid {
-        grid-template-columns: 1fr 1fr;
+      .image-story,
+      .workflow,
+      .cta-inner {
+        grid-template-columns: 1fr;
       }
 
-      .hero-grid { gap: 18px; }
-      .phone-stack { min-height: 500px; }
-      .phone.one { transform: translate(-80px, 40px) rotate(-7deg); }
-      .phone.three { transform: translate(80px, 40px) rotate(7deg); }
+      .feature-grid,
+      .capability-list,
+      .platform-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .cta-actions {
+        justify-content: flex-start;
+      }
     }
 
     @media (max-width: 760px) {
-      body {
-        padding-bottom: 82px;
-      }
+      body { padding-bottom: 78px; }
 
       .nav-inner {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 14px;
+        min-height: auto;
+        padding: 14px 0;
       }
 
-      .nav-links {
-        flex-wrap: wrap;
-        gap: 12px;
-        width: 100%;
-      }
-
-      .hero-grid,
-      .split,
-      .features,
-      .ad-strip-grid {
-        grid-template-columns: 1fr;
+      .nav-links a:not(.nav-cta) {
+        display: none;
       }
 
       .hero {
-        padding: 36px 0 34px;
+        padding: 50px 0 40px;
       }
 
       h1 {
-        font-size: clamp(2.25rem, 11vw, 3.2rem);
-        line-height: 1;
+        font-size: clamp(2.35rem, 12vw, 3.25rem);
       }
 
-      .lead {
-        font-size: 1rem;
-      }
-
-      .hero-actions {
-        display: grid;
+      .trust-row,
+      .hero-caption,
+      .feature-grid,
+      .capability-list,
+      .capability-table,
+      .capability-note,
+      .platform-grid,
+      .product-body {
         grid-template-columns: 1fr;
       }
 
-      .hero-proof {
+      .hero-visual,
+      .hero-visual img {
+        min-height: 420px;
+      }
+
+      .hero-visual img {
+        object-position: 62% center;
+      }
+
+      .hero-caption {
+        align-items: start;
+      }
+
+      .hero-caption .pulse {
+        width: 48px;
+        height: 48px;
+      }
+
+      .week-plan {
+        border-right: 0;
+        border-bottom: 1px solid var(--line-dark);
+      }
+
+      .product-body {
+        min-height: auto;
+      }
+
+      .story-photo,
+      .story-photo img,
+      .platform-photo,
+      .platform-photo img {
+        min-height: 300px;
+      }
+
+      .metrics-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section {
+        padding: 56px 0;
+      }
+
+      .timeline-row {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+
+      .tag {
+        justify-self: start;
+      }
+
+      .privacy-inner,
+      .footer-inner {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .hero-actions,
+      .cta-actions {
         display: grid;
         grid-template-columns: 1fr;
       }
 
       .btn {
         width: 100%;
-        min-height: 50px;
       }
-
-      .phone-stack {
-        min-height: 560px;
-        margin-top: 18px;
-        overflow: hidden;
-      }
-
-      .phone {
-        width: 72vw;
-        max-width: 242px;
-      }
-
-      .phone.one {
-        top: 44px;
-        transform: translate(-58px, 0) rotate(-8deg) scale(0.88);
-      }
-
-      .phone.two {
-        top: 0;
-      }
-
-      .phone.three {
-        top: 82px;
-        transform: translate(58px, 0) rotate(8deg) scale(0.88);
-      }
-
-      .hero-stats { display: grid; grid-template-columns: 1fr 1fr; }
-      .cta-box { padding: 28px 20px; }
 
       .mobile-download-bar {
         position: fixed;
@@ -702,129 +1001,34 @@
         z-index: 30;
         display: block;
         padding: 12px 16px calc(12px + env(safe-area-inset-bottom));
-        background: rgba(10,15,28,0.9);
-        backdrop-filter: blur(18px);
-        border-top: 1px solid rgba(255,255,255,0.12);
-      }
-
-      .mobile-download-bar .btn {
-        box-shadow: 0 12px 28px rgba(255, 138, 31, 0.32);
-      }
-
-      .desktop-app-store-cta {
-        display: none;
+        background: rgba(247, 248, 246, 0.9);
+        border-top: 1px solid rgba(21, 26, 31, 0.12);
+        backdrop-filter: blur(16px);
       }
     }
 
-    @media (max-width: 560px) {
+    @media (max-width: 480px) {
       .container {
-        width: 300px;
-        max-width: calc(100vw - 24px);
-        margin-left: auto;
-        margin-right: auto;
+        width: min(calc(100% - 24px), var(--max));
       }
 
-      .hero-grid,
-      .hero-grid > div {
-        width: 300px;
-        max-width: calc(100vw - 24px);
-        margin-left: auto;
-        margin-right: auto;
-      }
-
-      .nav-inner {
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-        gap: 10px;
-      }
-
-      .nav-links {
+      .brand > span:not(.logo) {
         display: none;
       }
 
-      .nav-links a:not(.nav-download):not(.nav-dashboard) {
-        display: none;
+      .nav-cta {
+        padding: 9px 11px;
       }
 
-      .eyebrow {
-        align-items: center;
-        border-radius: var(--radius);
-        justify-content: center;
-        text-align: center;
+      .product-panel {
+        padding: 10px;
+        border-radius: 12px;
       }
 
-      h1 {
-        font-size: clamp(1.95rem, 8.8vw, 2.35rem);
-        overflow-wrap: break-word;
-        text-align: center;
-      }
-
-      .mobile-break {
-        display: block;
-      }
-
-      .lead,
-      .app-store-note {
-        width: 100%;
-        max-width: 100%;
-        text-align: center;
-      }
-
-      .hero-actions,
-      .hero-proof,
-      .hero-stats {
-        width: 300px;
-        max-width: calc(100vw - 24px);
-        margin-left: auto;
-        margin-right: auto;
-      }
-
-      .free-note {
-        display: flex;
-        justify-content: center;
-        width: fit-content;
-        margin-left: auto;
-        margin-right: auto;
-      }
-
-      .hero-proof li,
-      .stat {
-        justify-content: center;
-        text-align: center;
-      }
-
-      .hero-stats {
-        grid-template-columns: 1fr;
-      }
-
-      .stat {
-        min-width: 0;
-      }
-
-      .phone-stack {
-        display: none;
-      }
-
-      .screen {
-        padding: 66px 15px 16px;
-      }
-
-      .screen h3 {
-        font-size: 1.5rem;
-      }
-
-      .map-box {
-        min-height: 180px;
-      }
-
-      .download-proof {
-        display: grid;
-        grid-template-columns: 1fr;
-      }
-
-      footer {
-        padding-bottom: 28px;
+      .feature,
+      .workflow-card,
+      .platform-card {
+        padding: 18px;
       }
     }
   </style>
@@ -832,16 +1036,17 @@
 <body>
   <header class="nav">
     <div class="container nav-inner">
-      <a href="#top" class="brand">
-        <div class="logo"><img src="icon.png" alt="Endravo logo" /></div>
+      <a href="#top" class="brand" aria-label="Endravo home">
+        <span class="logo"><img src="icon.png" alt="Endravo logo" /></span>
         <span>Endravo</span>
       </a>
-      <nav class="nav-links">
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="#product">Product</a>
         <a href="#features">Features</a>
-        <a href="#plans">Plans</a>
-        <a href="#watch">Apple Watch</a>
-        <a class="nav-dashboard" href="https://dashboard.endravo.app" target="_blank" rel="noopener noreferrer">Dashboard</a>
-        <a class="nav-download" href="https://apps.apple.com/us/app/endravo/id6761561213" target="_blank" rel="noopener noreferrer">Download</a>
+        <a href="#planning">Planning</a>
+        <a href="#platform">Platform</a>
+        <a href="https://dashboard.endravo.app" target="_blank" rel="noopener noreferrer">Dashboard</a>
+        <a class="nav-cta" href="https://apps.apple.com/us/app/endravo/id6761561213" target="_blank" rel="noopener noreferrer">App Store</a>
       </nav>
     </div>
   </header>
@@ -850,215 +1055,307 @@
     <section class="hero">
       <div class="container hero-grid">
         <div>
-          <div class="eyebrow">Available now on the App Store</div>
-          <p class="free-note">Free today. Free forever.</p>
-          <h1>Free running plans,<br class="mobile-break"> routes, strength,<br class="mobile-break"> and recovery in<br class="mobile-break"> <span class="gradient-text">one app</span>.</h1>
+          <p class="eyebrow">Training systems for everyday athletes</p>
+          <h1>Plan the work. Run the route. Recover with context.</h1>
           <p class="lead">
-            Endravo helps everyday athletes build smarter training weeks with route planning, structured workouts, strength sessions, recovery support, and weight-loss tools. No subscription. No paywall. Just download and start.
+            Endravo connects running plans, route design, strength work, recovery signals, Apple Watch workouts, and web dashboard planning into one clear training environment.
           </p>
           <div class="hero-actions">
-            <a class="btn btn-primary desktop-app-store-cta" href="https://apps.apple.com/us/app/endravo/id6761561213" target="_blank" rel="noopener noreferrer">Download on the App Store</a>
-            <a class="btn btn-dashboard" href="https://dashboard.endravo.app" target="_blank" rel="noopener noreferrer">Open Dashboard</a>
+            <a class="btn btn-primary" href="https://apps.apple.com/us/app/endravo/id6761561213" target="_blank" rel="noopener noreferrer">Download on the App Store</a>
+            <a class="btn btn-secondary" href="https://dashboard.endravo.app" target="_blank" rel="noopener noreferrer">Open Dashboard</a>
           </div>
-          <p class="app-store-note">Get Endravo for iPhone and start building smarter training today. It is free and always will be free.</p>
-          <ul class="hero-proof" aria-label="Endravo download benefits">
-            <li>No subscription</li>
-            <li>Made for iPhone</li>
-            <li>Routes, workouts, and recovery together</li>
-          </ul>
-          <div class="hero-stats">
-            <div class="stat">
-              <strong>Plan the week</strong>
-              <span>Running, strength, or hybrid training</span>
+          <div class="trust-row" aria-label="Endravo product summary">
+            <div class="trust-item">
+              <strong>iPhone and Apple Watch</strong>
+              <span>Plan on the phone, execute from the wrist.</span>
             </div>
-            <div class="stat">
-              <strong>Build better routes</strong>
-              <span>Distance, elevation, and waypoints</span>
+            <div class="trust-item">
+              <strong>Routes and structure</strong>
+              <span>Distance, elevation, intervals, and strength.</span>
             </div>
-            <div class="stat">
-              <strong>Recover smarter</strong>
-              <span>Track workouts, recovery, and weight goals</span>
+            <div class="trust-item">
+              <strong>Dashboard-ready</strong>
+              <span>Review training weeks with more room to think.</span>
             </div>
           </div>
         </div>
 
-        <div class="phone-stack" aria-label="Endravo app previews">
-          <div class="phone one">
-            <div class="screen">
-              <div class="mini-label">AI Plan Creation</div>
-              <h3>Build a first-pass plan for running, strength, or both.</h3>
-              <p class="muted">Use recovery, training load, and recent activity to start from something smart.</p>
-              <span class="chip">Preview & edit before scheduling</span>
-              <ul class="list">
-                <li>Race-focused running plans</li>
-                <li>Hybrid plans for runners</li>
-                <li>Weight-loss friendly training plans</li>
-              </ul>
-            </div>
-          </div>
+        <figure class="hero-visual" aria-label="Runner training outdoors at sunrise">
+          <img src="assets/hero-runner.png" alt="Runner training outdoors at sunrise" />
+          <figcaption class="hero-caption">
+            <span>
+              <strong>Training that feels ready before the first step.</strong>
+              Route, session, and recovery context stay connected from planning to execution.
+            </span>
+            <span class="pulse">Run</span>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
 
-          <div class="phone two">
-            <div class="screen dark">
-              <div class="mini-label">Routes</div>
-              <h3>Create routes with elevation in mind.</h3>
-              <div class="map-box">
-                <div class="route-line">
-                  <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M8 75C20 60 28 30 42 38C51 43 57 70 69 62C80 55 84 35 92 28" stroke="#2563eb" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-                    <circle cx="8" cy="75" r="5" fill="#22c55e"/>
-                    <circle cx="92" cy="28" r="5" fill="#f97316"/>
-                  </svg>
+    <section class="section" id="product">
+      <div class="container">
+        <div class="section-heading">
+          <p class="section-kicker">The Product</p>
+          <h2>A training workspace, not another fitness feed.</h2>
+          <p>
+            Endravo is organized around the decisions athletes actually make: what to do this week, where to run, how hard to push, and what needs attention before the next session.
+          </p>
+        </div>
+
+        <div class="product-panel" aria-label="Endravo planning interface preview">
+          <div class="product-shell">
+            <div class="product-topbar">
+              <span>Endravo Training Week</span>
+              <span class="status-dot" aria-hidden="true"></span>
+            </div>
+            <div class="product-body">
+              <div class="week-plan">
+                <div class="module-title">
+                  <strong>Schedule</strong>
+                  <span>Week 24</span>
+                </div>
+                <div class="session-list">
+                  <div class="session active">
+                    <strong>Threshold Run</strong>
+                    <span>42 min · intervals · watch-ready</span>
+                  </div>
+                  <div class="session">
+                    <strong>Lower Strength</strong>
+                    <span>36 min · runner-focused</span>
+                  </div>
+                  <div class="session">
+                    <strong>Easy Route</strong>
+                    <span>5.8 mi · moderate elevation</span>
+                  </div>
+                  <div class="session">
+                    <strong>Recovery Check</strong>
+                    <span>Sleep, load, and consistency review</span>
+                  </div>
                 </div>
               </div>
-              <div class="graph">
-                <svg viewBox="0 0 300 72" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M0 52C30 48 50 45 80 44C110 42 120 37 150 38C180 39 190 47 215 49C245 52 266 49 300 24" stroke="#fb923c" stroke-width="3" stroke-linecap="round"/>
-                </svg>
+              <div class="route-card">
+                <div class="module-title">
+                  <strong>Route Builder</strong>
+                  <span>Elevation aware</span>
+                </div>
+                <div class="map" aria-hidden="true">
+                  <div class="route-path"></div>
+                </div>
+                <div class="metrics-grid">
+                  <div class="metric">
+                    <strong>5.8</strong>
+                    <span>Miles</span>
+                  </div>
+                  <div class="metric">
+                    <strong>412</strong>
+                    <span>Feet gained</span>
+                  </div>
+                  <div class="metric">
+                    <strong>42</strong>
+                    <span>Minutes planned</span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
+        </div>
 
-          <div class="phone three">
-            <div class="screen">
-              <div class="mini-label">Workout Library</div>
-              <h3>Strength and run sessions in one place.</h3>
-              <p class="muted">Create and manage structured workouts for endurance, mobility, and strength.</p>
-              <span class="chip">Runner-focused strength</span>
-              <ul class="list">
-                <li>Interval workouts</li>
-                <li>Tempo and threshold sessions</li>
-                <li>Mobility and recovery work</li>
-              </ul>
+        <div class="image-story">
+          <div class="story-photo">
+            <img src="assets/strength-athlete.png" alt="Athlete strength training in a modern gym" />
+          </div>
+          <div class="story-copy">
+            <p class="section-kicker">Strength And Recovery</p>
+            <h3>Make the work around the run easier to follow.</h3>
+            <p>
+              Endravo keeps strength, mobility, recovery checks, and body composition work close to the run plan, so training feels complete instead of scattered across different tools.
+            </p>
+          </div>
+        </div>
+
+        <div class="section-heading spaced" id="features">
+          <p class="section-kicker">Capabilities</p>
+          <h2>Everything that shapes a better training week.</h2>
+        </div>
+
+        <div class="feature-grid">
+          <article class="feature">
+            <div class="feature-mark" aria-hidden="true"></div>
+            <h3>Route planning</h3>
+            <p>Design routes with distance, elevation, and waypoints before the run starts.</p>
+          </article>
+          <article class="feature">
+            <div class="feature-mark" aria-hidden="true"></div>
+            <h3>Structured workouts</h3>
+            <p>Build intervals, tempo runs, easy days, and strength sessions into a single week.</p>
+          </article>
+          <article class="feature">
+            <div class="feature-mark" aria-hidden="true"></div>
+            <h3>Recovery context</h3>
+            <p>Use workload, consistency, and recovery signals to keep training grounded.</p>
+          </article>
+          <article class="feature">
+            <div class="feature-mark" aria-hidden="true"></div>
+            <h3>Body composition goals</h3>
+            <p>Support sustainable weight-loss work without separating it from training quality.</p>
+          </article>
+        </div>
+
+        <div class="capability-list" aria-label="Endravo feature list">
+          <div class="capability-lead">
+            <div>
+              <p class="section-kicker">Feature Set</p>
+              <h3>Built for the full training loop.</h3>
+              <p>
+                Endravo brings planning, live workout execution, route intelligence, and recovery into one system for runners, cyclists, and hybrid athletes.
+              </p>
+            </div>
+            <div class="capability-note" aria-label="Supported training surfaces">
+              <span>iPhone planning</span>
+              <span>Apple Watch workouts</span>
+              <span>Web dashboard</span>
+              <span>Health data context</span>
+            </div>
+          </div>
+          <div class="capability-table">
+            <div class="capability-item">
+              <strong>Pace strategy</strong>
+              <span>Plan target pace, intensity, and race-day execution before the run starts.</span>
+            </div>
+            <div class="capability-item">
+              <strong>Live running</strong>
+              <span>Use structured sessions, intervals, and watch-ready guidance during workouts.</span>
+            </div>
+            <div class="capability-item">
+              <strong>Live cycling</strong>
+              <span>Track cycling efforts alongside running so endurance work stays connected.</span>
+            </div>
+            <div class="capability-item">
+              <strong>Route builder</strong>
+              <span>Create routes with distance, elevation, and waypoints in mind.</span>
+            </div>
+            <div class="capability-item">
+              <strong>Training plans</strong>
+              <span>Build weeks for base training, race prep, strength, recovery, or weight goals.</span>
+            </div>
+            <div class="capability-item">
+              <strong>Workout library</strong>
+              <span>Keep run sessions, strength work, mobility, and recovery routines organized.</span>
+            </div>
+            <div class="capability-item">
+              <strong>Recovery insights</strong>
+              <span>Review workload, sleep, consistency, and readiness context before pushing harder.</span>
+            </div>
+            <div class="capability-item">
+              <strong>Progress dashboard</strong>
+              <span>Use the web dashboard to review training history, plans, routes, and activity trends.</span>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="ad-strip" aria-label="Why download Endravo">
-      <div class="container ad-strip-grid">
-        <div class="ad-strip-item">
-          <strong>Free forever</strong>
-          <span>Endravo is free to download, free to use, and built to stay that way.</span>
-        </div>
-        <div class="ad-strip-item">
-          <strong>Run with a route ready</strong>
-          <span>Plan distance, elevation, and waypoints before you head out.</span>
-        </div>
-        <div class="ad-strip-item">
-          <strong>Train beyond the run</strong>
-          <span>Add strength, recovery, and weight-loss support in the same app.</span>
+    <section class="section" id="planning">
+      <div class="container workflow">
+        <article class="workflow-card dark">
+          <p class="section-kicker">Planning Flow</p>
+          <h2>From training intent to a week you can execute.</h2>
+          <p>
+            Start with the goal, shape the schedule, route the run, send the workout to Apple Watch, then review what actually happened. Endravo keeps that loop in one place.
+          </p>
+        </article>
+        <div class="timeline" aria-label="Endravo planning workflow">
+          <div class="timeline-row">
+            <strong>01</strong>
+            <span>Choose the training focus: race prep, base building, strength, recovery, or weight management.</span>
+            <span class="tag">Goal</span>
+          </div>
+          <div class="timeline-row">
+            <strong>02</strong>
+            <span>Build the week with runs, strength sessions, recovery work, and planned intensity.</span>
+            <span class="tag">Schedule</span>
+          </div>
+          <div class="timeline-row">
+            <strong>03</strong>
+            <span>Prepare routes and workouts so the session is ready before you leave.</span>
+            <span class="tag">Prepare</span>
+          </div>
+          <div class="timeline-row">
+            <strong>04</strong>
+            <span>Review completed activity and recovery context on iPhone or the dashboard.</span>
+            <span class="tag">Review</span>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="section" id="features">
+    <section class="section platform" id="platform">
       <div class="container">
-        <div class="section-title">
-          <h2>Why runners download Endravo.</h2>
-          <p>One free place for the training decisions that happen before, during, and after every run.</p>
+        <div class="section-heading center">
+          <p class="section-kicker">Platform</p>
+          <h2>Made for serious planning across the places athletes work.</h2>
+          <p>
+            Use Endravo from the device that fits the moment: quick updates on iPhone, workout execution on Apple Watch, and broader review from the dashboard.
+          </p>
         </div>
-
-        <div class="features">
-          <article class="card">
-            <div class="icon-badge">🗺️</div>
-            <h3>Route Planning</h3>
-            <p>Build routes with distance, elevation, and waypoints so every run starts with a clear target.</p>
+        <div class="platform-photo">
+          <img src="assets/watch-athletes.png" alt="Two athletes checking a smartwatch before a run" />
+        </div>
+        <div class="platform-grid">
+          <article class="platform-card">
+            <h3>iPhone app</h3>
+            <p>Plan weeks, create workouts, manage routes, and keep your training library organized.</p>
           </article>
-          <article class="card">
-            <div class="icon-badge">🏃</div>
-            <h3>Structured Workouts</h3>
-            <p>Create intervals, tempo runs, easy days, and sessions that match your current fitness.</p>
+          <article class="platform-card">
+            <h3>Apple Watch</h3>
+            <p>Bring structured sessions closer to the run so execution does not depend on a laptop or notebook.</p>
           </article>
-          <article class="card">
-            <div class="icon-badge">⚖️</div>
-            <h3>Weight Loss Support</h3>
-            <p>Build calorie-smart plans and routines designed for sustainable fat loss and better fitness.</p>
-          </article>
-          <article class="card">
-            <div class="icon-badge">🧠</div>
-            <h3>Recovery Insights</h3>
-            <p>Use recovery signals, workload, and consistency to know when to push and when to back off.</p>
+          <article class="platform-card">
+            <h3>Web dashboard</h3>
+            <p>Use a larger screen for reviewing training data, planning ahead, and keeping the system clean.</p>
           </article>
         </div>
       </div>
     </section>
 
-    <section class="section" id="plans">
-      <div class="container split">
-        <div class="card">
-          <h3>AI-powered training plans</h3>
-          <p>
-            Open Endravo and start from a plan that considers your current fitness, recovery, and training load. Build toward a race, general fitness, or a hybrid running-and-strength schedule.
-          </p>
-        </div>
-        <div class="card">
-          <h3>Simple enough to start today</h3>
-          <p>
-            Whether you are building consistency, getting ready for a 5K, or aiming longer, Endravo gives you a clear next step instead of another blank calendar. Download it free from the App Store and try your first plan today.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="watch">
-      <div class="container split">
-        <div class="card">
-          <h3>Built for Apple Watch</h3>
-          <p>
-            Take workouts, routes, and training guidance onto your wrist for a simpler run-day experience. Keep your plan and execution connected from phone to watch.
-          </p>
-        </div>
-        <div class="card">
-          <h3>Dashboard when you need it</h3>
-          <p>
-            Prefer a bigger screen for planning? Use the Endravo dashboard to review training and keep your next week organized.
-          </p>
-        </div>
+    <section class="privacy-band">
+      <div class="container privacy-inner">
+        <span><strong>Private by design.</strong> Endravo keeps training planning focused on your own progress, not social noise.</span>
+        <a href="privacy-policy.html">Read the privacy policy</a>
       </div>
     </section>
 
     <section class="cta" id="download">
-      <div class="container">
-        <div class="cta-box">
-          <h2>Download Endravo free.</h2>
+      <div class="container cta-inner">
+        <div>
+          <p class="section-kicker">Get Started</p>
+          <h2>Build a cleaner training week with Endravo.</h2>
           <p>
-            Endravo is live on the App Store, free now, and always will be free. Bring your routes, workouts, strength, recovery, and weight-loss support into one place.
+            Download the iPhone app, connect your planning workflow, and use the dashboard when you want a wider view of the week ahead.
           </p>
-          <div class="hero-actions cta-actions">
-            <a class="btn btn-primary desktop-app-store-cta" href="https://apps.apple.com/us/app/endravo/id6761561213" target="_blank" rel="noopener noreferrer">Download on the App Store</a>
-            <a class="btn btn-dashboard" href="https://dashboard.endravo.app" target="_blank" rel="noopener noreferrer">Open Dashboard</a>
-          </div>
-          <ul class="download-proof" aria-label="Endravo App Store highlights">
-            <li>Free forever</li>
-            <li>Made for iPhone</li>
-            <li>Built for runners and hybrid athletes</li>
-          </ul>
+        </div>
+        <div class="cta-actions">
+          <a class="btn btn-primary" href="https://apps.apple.com/us/app/endravo/id6761561213" target="_blank" rel="noopener noreferrer">Download App</a>
+          <a class="btn btn-secondary" href="https://dashboard.endravo.app" target="_blank" rel="noopener noreferrer">Open Dashboard</a>
         </div>
       </div>
     </section>
   </main>
 
   <footer>
-    <div class="container">
-      <div>© 2026 Endravo. Free forever. Download Endravo today from the App Store.</div>
+    <div class="container footer-inner">
+      <div>&copy; 2026 Endravo. Training planning for running, strength, recovery, and routes.</div>
       <div class="footer-links">
         <a href="privacy-policy.html">Privacy Policy</a>
         <a href="copyright.html">Copyright</a>
-        <a href="#" onclick="openTerms(); return false;">Terms of Service</a>
-        <a href="mailto:support@endravo.app">Contact Support</a>
+        <a href="mailto:support@endravo.app">Contact</a>
       </div>
     </div>
   </footer>
 
   <div class="mobile-download-bar" aria-label="Download Endravo">
-    <a class="btn btn-primary" href="https://apps.apple.com/us/app/endravo/id6761561213" target="_blank" rel="noopener noreferrer">Download Free</a>
+    <a class="btn btn-primary" href="https://apps.apple.com/us/app/endravo/id6761561213" target="_blank" rel="noopener noreferrer">Download App</a>
   </div>
-
-  <script>
-    function openTerms() {
-      alert('Terms of Service page - add similar dedicated page for full implementation');
-    }
-  </script>
 </body>
 </html>
