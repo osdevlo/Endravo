@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Endravo - Training Planning for Running, Strength, Recovery, and Routes</title>
-  <meta name="description" content="Endravo brings running plans, route planning, strength work, recovery context, Apple Watch support, and web dashboard planning into one training system." />
+  <title>Endravo - Training Plans, Routes, and Offline Maps for Apple Watch</title>
+  <meta name="description" content="Endravo brings running plans, route planning, strength work, recovery context, and offline maps for Apple Watch into one training system." />
   <link rel="icon" href="icon.png" type="image/png" />
   <style>
     :root {
@@ -857,6 +857,176 @@
       background: #ecefeb;
     }
 
+    .offline-section {
+      position: relative;
+      overflow: hidden;
+      color: #ffffff;
+      background:
+        radial-gradient(circle at 82% 18%, rgba(54, 194, 128, 0.2), transparent 30%),
+        radial-gradient(circle at 12% 88%, rgba(217, 109, 45, 0.16), transparent 34%),
+        #101716;
+      border-bottom-color: rgba(255, 255, 255, 0.12);
+    }
+
+    .offline-section::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      opacity: 0.18;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.07) 1px, transparent 1px);
+      background-size: 56px 56px;
+      mask-image: linear-gradient(90deg, transparent, #000 36%, #000);
+    }
+
+    .offline-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: minmax(0, 0.92fr) minmax(400px, 1.08fr);
+      gap: 58px;
+      align-items: center;
+    }
+
+    .offline-copy .section-kicker {
+      color: #5ce2a4;
+    }
+
+    .offline-copy h2 {
+      max-width: 680px;
+    }
+
+    .offline-copy > p:not(.section-kicker) {
+      max-width: 660px;
+      margin: 20px 0 0;
+      color: #bcc9c5;
+      font-size: 1.08rem;
+    }
+
+    .offline-section .btn-primary {
+      color: #102018;
+      background: #5ce2a4;
+      border-color: #5ce2a4;
+      box-shadow: 0 16px 34px rgba(48, 188, 121, 0.2);
+    }
+
+    .offline-section .btn-primary:hover {
+      background: #76e8b4;
+      border-color: #76e8b4;
+    }
+
+    .offline-points {
+      display: grid;
+      gap: 1px;
+      margin-top: 30px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.14);
+    }
+
+    .offline-point {
+      display: grid;
+      grid-template-columns: 42px 1fr;
+      gap: 14px;
+      align-items: start;
+      padding: 17px;
+      background: rgba(15, 23, 22, 0.88);
+    }
+
+    .offline-point-mark {
+      display: grid;
+      place-items: center;
+      width: 42px;
+      height: 42px;
+      border: 1px solid rgba(92, 226, 164, 0.34);
+      border-radius: 50%;
+      color: #5ce2a4;
+      background: rgba(92, 226, 164, 0.1);
+      font-size: 0.78rem;
+      font-weight: 850;
+    }
+
+    .offline-point strong {
+      display: block;
+      margin-bottom: 3px;
+      font-size: 1rem;
+    }
+
+    .offline-point span:last-child {
+      display: block;
+      color: #9eaaa6;
+      font-size: 0.92rem;
+    }
+
+    .offline-note {
+      margin-top: 18px;
+      color: #95a29e;
+      font-size: 0.88rem;
+    }
+
+    .watch-stage {
+      position: relative;
+      display: grid;
+      place-items: center;
+      min-height: 620px;
+      padding: 34px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 28px;
+      background:
+        radial-gradient(circle at 78% 17%, rgba(92, 226, 164, 0.24), transparent 27%),
+        linear-gradient(145deg, #f8f8f4 0%, #e8eee8 100%);
+      box-shadow: 0 34px 100px rgba(0, 0, 0, 0.3);
+    }
+
+    .watch-stage::before {
+      content: "";
+      position: absolute;
+      width: 72%;
+      height: 15%;
+      bottom: 19px;
+      border-radius: 50%;
+      background: rgba(15, 31, 25, 0.2);
+      filter: blur(30px);
+    }
+
+    .watch-stage::after {
+      content: "Actual Endravo offline map";
+      position: absolute;
+      left: 50%;
+      bottom: 18px;
+      z-index: 2;
+      padding: 8px 12px;
+      border: 1px solid rgba(18, 49, 39, 0.12);
+      border-radius: 999px;
+      color: #17372c;
+      background: rgba(255, 255, 255, 0.88);
+      font-size: 0.76rem;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      backdrop-filter: blur(10px);
+      transform: translateX(-50%);
+      white-space: nowrap;
+    }
+
+    .watch-reference {
+      position: relative;
+      z-index: 2;
+      width: min(100%, 500px);
+      margin: 0;
+      transform: translateY(-8px);
+    }
+
+    .watch-reference img {
+      display: block;
+      width: 100%;
+      height: auto;
+      filter: drop-shadow(0 24px 24px rgba(11, 20, 17, 0.28));
+    }
+
     .platform-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -1107,8 +1277,17 @@
       .hero-grid,
       .image-story,
       .workflow,
+      .offline-grid,
       .cta-inner {
         grid-template-columns: 1fr;
+      }
+
+      .offline-grid {
+        gap: 38px;
+      }
+
+      .watch-stage {
+        min-height: 580px;
       }
 
       .feature-grid,
@@ -1187,6 +1366,14 @@
         min-height: 300px;
       }
 
+      .watch-stage {
+        min-height: 520px;
+      }
+
+      .watch-reference {
+        width: min(92%, 470px);
+      }
+
       .metrics-grid {
         grid-template-columns: 1fr;
       }
@@ -1257,6 +1444,30 @@
       .platform-card {
         padding: 18px;
       }
+
+      .offline-point {
+        grid-template-columns: 36px 1fr;
+      }
+
+      .offline-point-mark {
+        width: 36px;
+        height: 36px;
+      }
+
+      .watch-stage {
+        min-height: 470px;
+        padding: 24px 14px 44px;
+        border-radius: 18px;
+      }
+
+      .watch-reference {
+        width: 100%;
+        transform: translateY(-3px);
+      }
+
+      .watch-stage::after {
+        bottom: 13px;
+      }
     }
   </style>
 </head>
@@ -1270,6 +1481,7 @@
       <nav class="nav-links" aria-label="Primary navigation">
         <a href="#product">Product</a>
         <a href="#features">Features</a>
+        <a href="#offline-maps">Offline Maps</a>
         <a href="#planning">Planning</a>
         <a href="#platform">Platform</a>
         <a href="https://dashboard.endravo.app" target="_blank" rel="noopener noreferrer">Dashboard</a>
@@ -1285,7 +1497,7 @@
           <p class="eyebrow">Training systems for everyday athletes</p>
           <h1>Plan the work. Run the route. Recover with context.</h1>
           <p class="lead">
-            Endravo connects running plans, route design, strength work, recovery signals, Apple Watch workouts, and web dashboard planning into one clear training environment.
+            Endravo connects running plans, route design, strength work, recovery signals, Apple Watch workouts, offline maps, and web dashboard planning into one clear training environment.
           </p>
           <div class="hero-actions">
             <a class="btn btn-primary" href="https://apps.apple.com/us/app/endravo/id6761561213" target="_blank" rel="noopener noreferrer">Download on the App Store</a>
@@ -1483,6 +1695,53 @@
       </div>
     </section>
 
+    <section class="section offline-section" id="offline-maps">
+      <div class="container offline-grid">
+        <div class="offline-copy">
+          <p class="section-kicker">Offline Maps For Apple Watch</p>
+          <h2>Leave the signal behind. Keep the map on your wrist.</h2>
+          <p>
+            Download an area from Endravo on iPhone before your workout. Roads, trails, your position, the planned route, and the path you have covered stay visible on Apple Watch when cellular service disappears.
+          </p>
+
+          <div class="offline-points" aria-label="How Endravo offline maps work">
+            <div class="offline-point">
+              <span class="offline-point-mark">01</span>
+              <span>
+                <strong>Choose an area</strong>
+                <span>Select the part of the map you need from the Endravo iPhone app.</span>
+              </span>
+            </div>
+            <div class="offline-point">
+              <span class="offline-point-mark">02</span>
+              <span>
+                <strong>Save it to Apple Watch</strong>
+                <span>Download the map to your Watch before you leave reliable coverage.</span>
+              </span>
+            </div>
+            <div class="offline-point">
+              <span class="offline-point-mark">03</span>
+              <span>
+                <strong>Explore without your phone</strong>
+                <span>Use the saved map during outdoor GPS activities and stay oriented on roads and trails.</span>
+              </span>
+            </div>
+          </div>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="https://apps.apple.com/us/app/endravo/id6761561213" target="_blank" rel="noopener noreferrer">Get Endravo</a>
+          </div>
+          <p class="offline-note">Download map areas before leaving coverage. GPS remains available without cellular service.</p>
+        </div>
+
+        <div class="watch-stage" aria-label="Endravo offline map displayed on Apple Watch">
+          <figure class="watch-reference">
+            <img src="assets/endravo-offline-watch.jpeg" alt="Endravo offline map navigation running on Apple Watch" loading="lazy" decoding="async" />
+          </figure>
+        </div>
+      </div>
+    </section>
+
     <section class="section" id="planning">
       <div class="container workflow">
         <article class="workflow-card dark">
@@ -1536,7 +1795,7 @@
           </article>
           <article class="platform-card">
             <h3>Apple Watch</h3>
-            <p>Bring structured sessions closer to the run so execution does not depend on a laptop or notebook.</p>
+            <p>Run structured sessions and keep downloaded roads, trails, routes, and your covered path available from your wrist.</p>
           </article>
           <article class="platform-card">
             <h3>Web dashboard</h3>
@@ -1590,7 +1849,7 @@
 
     if (motionOK && "IntersectionObserver" in window) {
       const revealTargets = document.querySelectorAll(
-        ".section-heading, .product-panel, .image-story, .feature, .capability-lead, .capability-item, .workflow-card, .timeline-row, .platform-photo, .platform-card, .privacy-band, .cta-inner"
+        ".section-heading, .product-panel, .image-story, .feature, .capability-lead, .capability-item, .offline-copy, .watch-stage, .workflow-card, .timeline-row, .platform-photo, .platform-card, .privacy-band, .cta-inner"
       );
 
       revealTargets.forEach((target, index) => {
