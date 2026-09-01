@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Endravo - Training Plans, Routes, and Offline Maps for Apple Watch</title>
-  <meta name="description" content="Endravo brings running plans, route planning, strength work, recovery context, and offline maps for Apple Watch into one training system." />
+  <title>Endravo 2.0 - Endurance Training for iPhone and Apple Watch</title>
+  <meta name="description" content="Endravo 2.0 connects Stryd pod metrics, adaptive plans, personal recovery, Watch-created routes, and offline Apple Watch navigation in one endurance system." />
   <link rel="icon" href="icon.png" type="image/png" />
   <style>
     :root {
@@ -256,7 +256,7 @@
       min-height: 680px;
       display: block;
       object-fit: cover;
-      object-position: 56% center;
+      object-position: 68% center;
       transform: scale(1.01);
       transition: transform 0.7s ease;
     }
@@ -323,6 +323,577 @@
       font-size: 0.9rem;
       animation: pulseGlow 2.8s ease-in-out infinite;
     }
+
+    .release-section {
+      background: #f1f3ef;
+    }
+
+    .release-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
+      gap: 16px;
+    }
+
+    .release-card {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: var(--surface);
+      box-shadow: 0 18px 50px rgba(20, 25, 30, 0.08);
+    }
+
+    .release-photo {
+      overflow: hidden;
+      background: #131719;
+    }
+
+    .release-photo img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.7s ease;
+    }
+
+    .release-card:hover .release-photo img {
+      transform: scale(1.025);
+    }
+
+    .release-card.featured {
+      display: grid;
+      grid-template-columns: minmax(240px, 0.9fr) minmax(0, 1.1fr);
+      min-height: 590px;
+    }
+
+    .release-card.featured .release-photo {
+      min-height: 590px;
+    }
+
+    .release-card.featured .release-photo img {
+      object-position: 50% 70%;
+      transform: scale(1.18);
+    }
+
+    .release-card.featured:hover .release-photo img {
+      transform: scale(1.21);
+    }
+
+    .release-stack {
+      display: grid;
+      gap: 16px;
+    }
+
+    .release-stack .release-photo {
+      min-height: 320px;
+    }
+
+    .release-stack .release-photo img {
+      object-position: 58% center;
+    }
+
+    .release-copy {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 34px;
+    }
+
+    .release-copy h3 {
+      margin: 0;
+      font-size: clamp(1.9rem, 3vw, 3.2rem);
+      line-height: 1.02;
+      text-wrap: balance;
+    }
+
+    .release-copy p:not(.section-kicker) {
+      margin: 16px 0 0;
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    .release-badge {
+      display: inline-flex;
+      align-self: flex-start;
+      margin-top: 24px;
+      padding: 9px 12px;
+      border: 1px solid rgba(217, 109, 45, 0.24);
+      border-radius: 999px;
+      color: #a64d1c;
+      background: rgba(217, 109, 45, 0.08);
+      font-size: 0.8rem;
+      font-weight: 800;
+    }
+
+    .release-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: var(--line);
+    }
+
+    .release-list article {
+      min-height: 154px;
+      padding: 24px;
+      background: var(--surface);
+    }
+
+    .release-list strong {
+      display: block;
+      margin-bottom: 7px;
+      font-size: 1.02rem;
+    }
+
+    .release-list span {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .triathlon-section {
+      color: #ffffff;
+      background:
+        radial-gradient(circle at 8% 12%, rgba(39, 111, 191, 0.2), transparent 30%),
+        radial-gradient(circle at 88% 86%, rgba(217, 109, 45, 0.18), transparent 32%),
+        #111417;
+      border-bottom-color: rgba(255, 255, 255, 0.12);
+    }
+
+    .triathlon-section .section-kicker {
+      color: #ff995c;
+    }
+
+    .triathlon-section .section-heading p:not(.section-kicker) {
+      color: #b7c0c7;
+    }
+
+    .discipline-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .discipline-card {
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.055);
+      transition: transform 0.24s ease, border-color 0.24s ease;
+    }
+
+    .discipline-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(255, 255, 255, 0.28);
+    }
+
+    .discipline-photo {
+      height: 310px;
+      overflow: hidden;
+      background: #0d1012;
+    }
+
+    .discipline-photo img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.7s ease;
+    }
+
+    .discipline-card:hover .discipline-photo img {
+      transform: scale(1.035);
+    }
+
+    .discipline-card.swim .discipline-photo img { object-position: 52% center; }
+    .discipline-card.bike .discipline-photo img { object-position: 47% center; }
+    .discipline-card.run .discipline-photo img { object-position: 58% center; }
+
+    .discipline-copy {
+      padding: 24px;
+    }
+
+    .discipline-number {
+      display: inline-block;
+      margin-bottom: 18px;
+      color: #ff995c;
+      font-size: 0.78rem;
+      font-weight: 850;
+      letter-spacing: 0.08em;
+    }
+
+    .discipline-copy h3 {
+      margin: 0 0 9px;
+      font-size: 1.35rem;
+    }
+
+    .discipline-copy p {
+      margin: 0;
+      color: #acb5bc;
+      font-size: 0.94rem;
+    }
+
+    .triathlon-strip {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1px;
+      margin-top: 14px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.14);
+    }
+
+    .triathlon-strip div {
+      padding: 18px;
+      background: rgba(17, 20, 23, 0.92);
+    }
+
+    .triathlon-strip strong,
+    .triathlon-strip span {
+      display: block;
+    }
+
+    .triathlon-strip strong {
+      margin-bottom: 4px;
+      font-size: 0.92rem;
+    }
+
+    .triathlon-strip span {
+      color: #98a3ab;
+      font-size: 0.82rem;
+    }
+
+    .hero-showcase {
+      position: relative;
+      min-height: 680px;
+      overflow: hidden;
+      border: 1px solid rgba(21, 26, 31, 0.14);
+      border-radius: 18px;
+      background: #111619;
+      box-shadow: var(--shadow);
+      isolation: isolate;
+    }
+
+    .hero-showcase::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background: linear-gradient(180deg, rgba(10, 14, 16, 0.08), rgba(10, 14, 16, 0.82));
+      pointer-events: none;
+    }
+
+    .hero-showcase-photo {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 68% center;
+    }
+
+    .hero-phone,
+    .hero-watch {
+      position: absolute;
+      z-index: 2;
+      overflow: hidden;
+      background: #050505;
+      box-shadow: 0 28px 70px rgba(0, 0, 0, 0.48);
+    }
+
+    .hero-phone {
+      right: 11%;
+      bottom: -74px;
+      width: min(47%, 270px);
+      padding: 7px;
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      border-radius: 42px;
+      transform: rotate(3deg);
+    }
+
+    .hero-phone img,
+    .hero-watch img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .hero-phone img { border-radius: 35px; }
+
+    .hero-watch {
+      left: 6%;
+      bottom: 94px;
+      width: min(34%, 198px);
+      padding: 6px;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 38px;
+      transform: rotate(-4deg);
+    }
+
+    .hero-watch img { border-radius: 30px; }
+
+    .hero-showcase-label {
+      position: absolute;
+      left: 20px;
+      top: 20px;
+      z-index: 3;
+      max-width: 245px;
+      padding: 13px 15px;
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 12px;
+      background: rgba(10, 14, 16, 0.68);
+      backdrop-filter: blur(14px);
+      font-size: 0.9rem;
+      font-weight: 760;
+    }
+
+    .sports-band {
+      padding: 24px 0;
+      color: #fff;
+      background: #111619;
+    }
+
+    .sports-band-inner {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .sports-band strong {
+      margin-right: 10px;
+      color: #aeb7bd;
+      font-size: 0.82rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .sport-pill {
+      padding: 9px 13px;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.06);
+      font-size: 0.88rem;
+      font-weight: 720;
+    }
+
+    .screens-section { background: #f1f3ef; }
+
+    .screen-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 14px;
+      align-items: start;
+    }
+
+    .screen-grid-compact {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    .product-shot-grid {
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      max-width: none;
+    }
+
+    .product-shot-grid .screen-frame {
+      position: relative;
+      height: 500px;
+      padding: 0;
+      overflow: hidden;
+      isolation: isolate;
+      background: #111619;
+    }
+
+    .product-shot-grid .sport-photo {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 0;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .product-shot-grid .product-visual::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background: linear-gradient(180deg, rgba(10, 14, 16, 0.04), rgba(10, 14, 16, 0.5));
+      pointer-events: none;
+    }
+
+    .product-shot-grid .product-screen {
+      position: absolute;
+      left: 50%;
+      bottom: -34px;
+      z-index: 2;
+      display: block;
+      width: 76%;
+      height: auto;
+      max-height: 92%;
+      border: 5px solid #080a0c;
+      border-radius: 26px;
+      object-fit: contain;
+      box-shadow: 0 24px 48px rgba(0, 0, 0, 0.42);
+      transform: translateX(-50%);
+    }
+
+    .product-shot-grid .product-visual.run .sport-photo { object-position: 67% center; }
+    .product-shot-grid .product-visual.ride .sport-photo { object-position: 47% center; }
+    .product-shot-grid .product-visual.strength .sport-photo { object-position: 61% center; }
+    .product-shot-grid .product-visual.swim .sport-photo { object-position: 45% center; }
+
+    .product-shot-grid .product-visual.offline {
+      background:
+        radial-gradient(circle at 50% 20%, rgba(217, 109, 45, 0.28), transparent 34%),
+        linear-gradient(145deg, #1c2428, #080b0d);
+    }
+
+    .product-shot-grid .product-visual.offline .product-screen {
+      bottom: 54px;
+      width: 88%;
+      border-width: 8px;
+      border-radius: 40px;
+    }
+
+    .release-grid-balanced {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .release-grid-balanced .release-card {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .release-grid-balanced .release-photo {
+      height: 320px;
+      min-height: 320px;
+    }
+
+    .release-grid-balanced .release-photo img {
+      object-position: 50% 64%;
+    }
+
+    .release-grid-balanced .release-card:last-child .release-photo img {
+      object-position: 50% 42%;
+    }
+
+    .release-grid-balanced .release-copy {
+      min-height: 330px;
+      justify-content: flex-start;
+    }
+
+    .release-grid-balanced + .release-list {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      margin-top: 14px;
+    }
+
+    .screen-card {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: #fff;
+      box-shadow: 0 18px 48px rgba(20, 25, 30, 0.08);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .screen-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 26px 64px rgba(20, 25, 30, 0.13);
+    }
+
+    .screen-frame {
+      padding: 12px 12px 0;
+      background: linear-gradient(155deg, #171d21, #293239);
+    }
+
+    .screen-frame img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 24px 24px 0 0;
+    }
+
+    .screen-card-copy { padding: 18px; }
+
+    .screen-card-copy strong {
+      display: block;
+      margin-bottom: 5px;
+      font-size: 1rem;
+    }
+
+    .screen-card-copy span {
+      display: block;
+      color: var(--muted);
+      font-size: 0.84rem;
+    }
+
+    .update-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .update-card {
+      min-height: 250px;
+      padding: 26px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: #fff;
+    }
+
+    .update-card.dark {
+      color: #fff;
+      border-color: #20272c;
+      background: #14191d;
+    }
+
+    .update-card .update-number {
+      display: block;
+      margin-bottom: 42px;
+      color: var(--orange);
+      font-size: 0.78rem;
+      font-weight: 850;
+      letter-spacing: 0.08em;
+    }
+
+    .update-card h3 {
+      margin: 0 0 10px;
+      font-size: 1.45rem;
+      line-height: 1.08;
+    }
+
+    .update-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .update-card.dark p { color: #aeb8bf; }
+
+    .audience-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-bottom: 44px;
+    }
+
+    .audience-card {
+      min-height: 175px;
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: var(--surface);
+    }
+
+    .audience-card h3 { margin: 0 0 8px; }
+    .audience-card p { margin: 0; color: var(--muted); }
 
     .product-panel {
       background: var(--surface-strong);
@@ -1015,16 +1586,21 @@
     .watch-reference {
       position: relative;
       z-index: 2;
-      width: min(100%, 500px);
+      width: min(72%, 350px);
       margin: 0;
-      transform: translateY(-8px);
+      padding: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 52px;
+      background: #050505;
+      box-shadow: 0 28px 58px rgba(11, 20, 17, 0.32);
+      transform: translateY(-8px) rotate(1deg);
     }
 
     .watch-reference img {
       display: block;
       width: 100%;
       height: auto;
-      filter: drop-shadow(0 24px 24px rgba(11, 20, 17, 0.28));
+      border-radius: 40px;
     }
 
     .platform-grid {
@@ -1278,8 +1854,13 @@
       .image-story,
       .workflow,
       .offline-grid,
+      .release-grid,
       .cta-inner {
         grid-template-columns: 1fr;
+      }
+
+      .release-card.featured {
+        grid-template-columns: minmax(240px, 0.82fr) minmax(0, 1.18fr);
       }
 
       .offline-grid {
@@ -1292,17 +1873,34 @@
 
       .feature-grid,
       .capability-list,
-      .platform-grid {
+      .platform-grid,
+      .discipline-grid,
+      .screen-grid,
+      .update-grid,
+      .audience-grid {
         grid-template-columns: repeat(2, 1fr);
+      }
+
+      .discipline-card.run {
+        grid-column: 1 / -1;
       }
 
       .cta-actions {
         justify-content: flex-start;
       }
+
+      .release-grid-balanced + .release-list {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
     }
 
     @media (max-width: 760px) {
       body { padding-bottom: 78px; }
+
+      .nav-cta,
+      main a[href^="https://apps.apple.com"] {
+        display: none !important;
+      }
 
       .nav-inner {
         min-height: auto;
@@ -1327,9 +1925,26 @@
       .capability-list,
       .capability-table,
       .capability-note,
+      .release-card.featured,
+      .release-list,
+      .discipline-grid,
+      .triathlon-strip,
       .platform-grid,
       .product-body {
         grid-template-columns: 1fr;
+      }
+
+      .discipline-card.run {
+        grid-column: auto;
+      }
+
+      .release-card.featured,
+      .release-card.featured .release-photo {
+        min-height: 0;
+      }
+
+      .release-card.featured .release-photo {
+        height: 430px;
       }
 
       .hero-visual,
@@ -1337,8 +1952,53 @@
         min-height: 420px;
       }
 
+      .hero-showcase {
+        min-height: 560px;
+      }
+
+      .hero-phone {
+        right: 7%;
+        width: min(50%, 230px);
+      }
+
+      .hero-watch {
+        left: 5%;
+        bottom: 82px;
+        width: min(38%, 170px);
+      }
+
+      .screen-grid,
+      .update-grid,
+      .audience-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .screen-card {
+        display: grid;
+        grid-template-columns: minmax(145px, 0.72fr) minmax(0, 1fr);
+        align-items: center;
+      }
+
+      .screen-frame { padding: 10px 10px 0; }
+
+      .product-shot-grid .screen-frame {
+        height: 300px;
+        padding: 0;
+      }
+
+      .release-grid-balanced + .release-list {
+        grid-template-columns: 1fr;
+      }
+
+      .sports-band-inner { justify-content: flex-start; }
+
+      .sports-band strong {
+        width: 100%;
+        margin: 0 0 4px;
+      }
+
       .hero-visual img {
-        object-position: 62% center;
+        object-position: 69% center;
       }
 
       .hero-caption {
@@ -1371,7 +2031,7 @@
       }
 
       .watch-reference {
-        width: min(92%, 470px);
+        width: min(70%, 340px);
       }
 
       .metrics-grid {
@@ -1441,7 +2101,9 @@
 
       .feature,
       .workflow-card,
-      .platform-card {
+      .platform-card,
+      .release-copy,
+      .release-list article {
         padding: 18px;
       }
 
@@ -1461,7 +2123,7 @@
       }
 
       .watch-reference {
-        width: 100%;
+        width: min(78%, 310px);
         transform: translateY(-3px);
       }
 
@@ -1479,6 +2141,8 @@
         <span>Endravo</span>
       </a>
       <nav class="nav-links" aria-label="Primary navigation">
+        <a href="#screens">App Screens</a>
+        <a href="#new">What's New</a>
         <a href="#product">Product</a>
         <a href="#features">Features</a>
         <a href="#offline-maps">Offline Maps</a>
@@ -1494,10 +2158,10 @@
     <section class="hero">
       <div class="container hero-grid">
         <div>
-          <p class="eyebrow">Training systems for everyday athletes</p>
-          <h1>Plan the work. Run the route. Recover with context.</h1>
+          <p class="eyebrow">Endravo 2.0.0 · Built for endurance athletes</p>
+          <h1>Train longer. Recover smarter. Go farther.</h1>
           <p class="lead">
-            Endravo connects running plans, route design, strength work, recovery signals, Apple Watch workouts, offline maps, and web dashboard planning into one clear training environment.
+            One connected training system for running, cycling, swimming, hiking, strength, and triathlon—with adaptive plans, personal recovery, Stryd pod metrics, Watch-created routes, and offline Apple Watch navigation.
           </p>
           <div class="hero-actions">
             <a class="btn btn-primary" href="https://apps.apple.com/us/app/endravo/id6761561213" target="_blank" rel="noopener noreferrer">Download on the App Store</a>
@@ -1505,30 +2169,120 @@
           </div>
           <div class="trust-row" aria-label="Endravo product summary">
             <div class="trust-item">
-              <strong>iPhone and Apple Watch</strong>
-              <span>Plan on the phone, execute from the wrist.</span>
+              <strong>Adaptive plans</strong>
+              <span>Training that can adjust around recovery and real life.</span>
             </div>
             <div class="trust-item">
-              <strong>Routes and structure</strong>
-              <span>Distance, elevation, intervals, and strength.</span>
+              <strong>Outdoor confidence</strong>
+              <span>Create routes and navigate offline from Apple Watch.</span>
             </div>
             <div class="trust-item">
-              <strong>Dashboard-ready</strong>
-              <span>Review training weeks with more room to think.</span>
+              <strong>Recovery + sensors</strong>
+              <span>Personal readiness with compatible Stryd support.</span>
             </div>
           </div>
         </div>
 
-        <figure class="hero-visual" data-tilt aria-label="Runner training outdoors at sunrise">
-          <img src="assets/hero-runner.png" alt="Runner training outdoors at sunrise" />
+        <figure class="hero-visual" data-tilt aria-label="Trail runner climbing through mountain terrain">
+          <img src="assets/mountain-runner.jpg" alt="Endurance runner climbing through mountain terrain" fetchpriority="high" />
           <figcaption class="hero-caption">
             <span>
-              <strong>Training that feels ready before the first step.</strong>
-              Route, session, and recovery context stay connected from planning to execution.
+              <strong>Endravo 2.0 connects the full training loop.</strong>
+              Plan, record, recover, use compatible sensors, and navigate offline from Apple Watch.
             </span>
-            <span class="pulse">Run</span>
+            <span class="pulse">2.0</span>
           </figcaption>
         </figure>
+      </div>
+    </section>
+
+    <section class="section release-section" id="new">
+      <div class="container">
+        <div class="section-heading">
+          <p class="section-kicker">New In Endravo 2.0</p>
+          <h2>Serious endurance tools, built into one focused training system.</h2>
+          <p>
+            Endravo 2.0 brings personal recovery intelligence, external running metrics, Watch-created routes, dependable offline navigation, and multisport support together without turning training into noise.
+          </p>
+        </div>
+
+        <div class="release-grid release-grid-balanced">
+          <article class="release-card">
+            <div class="release-photo">
+              <img src="assets/city-endurance-runner.jpg" alt="Endurance athlete climbing during a road race" loading="lazy" decoding="async" />
+            </div>
+            <div class="release-copy">
+              <p class="section-kicker">Recovery, Personalized</p>
+              <h3>Readiness measured against you—not a generic athlete.</h3>
+              <p>Endravo brings sleep, HRV, resting heart rate, respiratory rate, wrist temperature, training load, and wellness into one daily recovery view. Personal baselines, confidence, fatigue, and sport-specific readiness make the next decision clearer.</p>
+              <span class="release-badge">Recovery · Energy Reserve · Training Load</span>
+            </div>
+          </article>
+
+          <article class="release-card">
+            <div class="release-photo">
+              <img src="assets/track-runners.jpg" alt="Runners training together on a track" loading="lazy" decoding="async" />
+            </div>
+            <div class="release-copy">
+              <p class="section-kicker">Stryd Pod Support</p>
+              <h3>Power-driven running, directly inside Endravo.</h3>
+              <p>Pair a compatible Stryd pod over Bluetooth on iPhone or Apple Watch. Use live power, pace, cadence, stride length, and distance; if the pod drops, Endravo returns smoothly to device metrics.</p>
+            </div>
+          </article>
+        </div>
+
+        <div class="release-list" aria-label="Additional Endravo 2.0 features">
+          <article><strong>Build routes on Apple Watch</strong><span>Create one-way, return-loop, or out-and-back routes from downloaded maps.</span></article>
+          <article><strong>Navigate fully offline</strong><span>Keep map detail, position, planned paths, distance, and turn cues beyond coverage.</span></article>
+          <article><strong>Adaptive training plans</strong><span>Adjust selected plans around soreness, illness, travel, rest, walking, or mobility.</span></article>
+          <article><strong>Multisport and triathlon</strong><span>Coordinate swimming, cycling, running, strength, bricks, transitions, and recovery.</span></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section screens-section" id="screens">
+      <div class="container">
+        <div class="section-heading">
+          <p class="section-kicker">Endravo In Action</p>
+          <h2>Built for every side of endurance.</h2>
+          <p>See planning, live recording, strength, swimming, and offline Watch navigation working as one system.</p>
+        </div>
+        <div class="screen-grid product-shot-grid">
+          <article class="screen-card">
+            <div class="screen-frame product-visual run">
+              <img class="sport-photo" src="assets/mountain-runner.jpg" alt="Trail runner training in the mountains" loading="lazy" decoding="async" />
+              <img class="product-screen" src="assets/screen-plan.png" alt="Endravo adaptive training plan on iPhone" loading="lazy" decoding="async" />
+            </div>
+            <div class="screen-card-copy"><strong>Plan the run</strong><span>Adaptive schedules and clear daily recommendations.</span></div>
+          </article>
+          <article class="screen-card">
+            <div class="screen-frame product-visual ride">
+              <img class="sport-photo" src="assets/sport-cycling.jpg" alt="Road cyclists training together" loading="lazy" decoding="async" />
+              <img class="product-screen" src="assets/screen-cycling.jpeg" alt="Endravo live cycling workout on iPhone" loading="lazy" decoding="async" />
+            </div>
+            <div class="screen-card-copy"><strong>Ride with purpose</strong><span>Routes, live metrics, and structured cycling sessions.</span></div>
+          </article>
+          <article class="screen-card">
+            <div class="screen-frame product-visual strength">
+              <img class="sport-photo" src="assets/strength-athlete.png" alt="Athlete performing strength training" loading="lazy" decoding="async" />
+              <img class="product-screen" src="assets/screen-strength.jpeg" alt="Endravo guided strength workout on iPhone" loading="lazy" decoding="async" />
+            </div>
+            <div class="screen-card-copy"><strong>Build durability</strong><span>Guided strength that supports endurance performance.</span></div>
+          </article>
+          <article class="screen-card">
+            <div class="screen-frame product-visual swim">
+              <img class="sport-photo" src="assets/sport-swimming.jpg" alt="Open-water swimmer training" loading="lazy" decoding="async" />
+              <img class="product-screen" src="assets/screen-workout-builder.jpeg" alt="Endravo multisport workout builder on iPhone" loading="lazy" decoding="async" />
+            </div>
+            <div class="screen-card-copy"><strong>Swim with structure</strong><span>Pool and open-water sessions within the same week.</span></div>
+          </article>
+          <article class="screen-card">
+            <div class="screen-frame product-visual offline">
+              <img class="product-screen" src="assets/watch-offline-navigation.png" alt="Endravo offline navigation on Apple Watch" loading="lazy" decoding="async" />
+            </div>
+            <div class="screen-card-copy"><strong>Navigate offline</strong><span>Downloaded maps and route guidance on your wrist.</span></div>
+          </article>
+        </div>
       </div>
     </section>
 
@@ -1536,9 +2290,9 @@
       <div class="container">
         <div class="section-heading">
           <p class="section-kicker">The Product</p>
-          <h2>A training workspace, not another fitness feed.</h2>
+          <h2>One training workspace for the way endurance athletes actually train.</h2>
           <p>
-            Endravo is organized around the decisions athletes actually make: what to do this week, where to run, how hard to push, and what needs attention before the next session.
+            Plan the week, complete the workout, review the load, and adjust what comes next—without splitting your training across disconnected tools.
           </p>
         </div>
 
@@ -1550,50 +2304,21 @@
             </div>
             <div class="product-body">
               <div class="week-plan">
-                <div class="module-title">
-                  <strong>Schedule</strong>
-                  <span>Week 24</span>
-                </div>
+                <div class="module-title"><strong>Schedule</strong><span>Week 24</span></div>
                 <div class="session-list">
-                  <div class="session active">
-                    <strong>Threshold Run</strong>
-                    <span>42 min · intervals · watch-ready</span>
-                  </div>
-                  <div class="session">
-                    <strong>Lower Strength</strong>
-                    <span>36 min · runner-focused</span>
-                  </div>
-                  <div class="session">
-                    <strong>Easy Route</strong>
-                    <span>5.8 mi · moderate elevation</span>
-                  </div>
-                  <div class="session">
-                    <strong>Recovery Check</strong>
-                    <span>Sleep, load, and consistency review</span>
-                  </div>
+                  <div class="session active"><strong>Threshold Run</strong><span>42 min · intervals · watch-ready</span></div>
+                  <div class="session"><strong>Endurance Ride</strong><span>75 min · aerobic development</span></div>
+                  <div class="session"><strong>Strength Session</strong><span>36 min · durability focused</span></div>
+                  <div class="session"><strong>Recovery Check</strong><span>Sleep, load, and readiness review</span></div>
                 </div>
               </div>
               <div class="route-card">
-                <div class="module-title">
-                  <strong>Route Builder</strong>
-                  <span>Elevation aware</span>
-                </div>
-                <div class="map" aria-hidden="true">
-                  <div class="route-path"></div>
-                </div>
+                <div class="module-title"><strong>Route Builder</strong><span>Elevation aware</span></div>
+                <div class="map" aria-hidden="true"><div class="route-path"></div></div>
                 <div class="metrics-grid">
-                  <div class="metric">
-                    <strong>5.8</strong>
-                    <span>Miles</span>
-                  </div>
-                  <div class="metric">
-                    <strong>412</strong>
-                    <span>Feet gained</span>
-                  </div>
-                  <div class="metric">
-                    <strong>42</strong>
-                    <span>Minutes planned</span>
-                  </div>
+                  <div class="metric"><strong>5.8</strong><span>Miles</span></div>
+                  <div class="metric"><strong>412</strong><span>Feet gained</span></div>
+                  <div class="metric"><strong>42</strong><span>Minutes planned</span></div>
                 </div>
               </div>
             </div>
@@ -1601,15 +2326,11 @@
         </div>
 
         <div class="image-story">
-          <div class="story-photo">
-            <img src="assets/strength-athlete.png" alt="Athlete strength training in a modern gym" />
-          </div>
+          <div class="story-photo"><img src="assets/strength-athlete.png" alt="Athlete strength training in a modern gym" /></div>
           <div class="story-copy">
             <p class="section-kicker">Strength And Recovery</p>
-            <h3>Make the work around the run easier to follow.</h3>
-            <p>
-              Endravo keeps strength, mobility, recovery checks, and body composition work close to the run plan, so training feels complete instead of scattered across different tools.
-            </p>
+            <h3>Support the work around every endurance session.</h3>
+            <p>Endravo keeps strength, mobility, recovery checks, and body-composition work close to the endurance plan, so training feels complete instead of scattered across different tools.</p>
           </div>
         </div>
 
@@ -1647,7 +2368,7 @@
               <p class="section-kicker">Feature Set</p>
               <h3>Built for the full training loop.</h3>
               <p>
-                Endravo brings planning, live workout execution, route intelligence, and recovery into one system for runners, cyclists, and hybrid athletes.
+                Endravo brings planning, multisport execution, route intelligence, external sensors, and recovery into one system for runners, cyclists, swimmers, hikers, and hybrid athletes.
               </p>
             </div>
             <div class="capability-note" aria-label="Supported training surfaces">
@@ -1669,6 +2390,14 @@
             <div class="capability-item">
               <strong>Live cycling</strong>
               <span>Track cycling efforts alongside running so endurance work stays connected.</span>
+            </div>
+            <div class="capability-item">
+              <strong>Stryd pod metrics</strong>
+              <span>Use compatible external power, pace, cadence, stride length, and distance data over Bluetooth.</span>
+            </div>
+            <div class="capability-item">
+              <strong>Multisport planning</strong>
+              <span>Coordinate swim, bike, run, brick sessions, transitions, strength, and recovery.</span>
             </div>
             <div class="capability-item">
               <strong>Route builder</strong>
@@ -1699,9 +2428,9 @@
       <div class="container offline-grid">
         <div class="offline-copy">
           <p class="section-kicker">Offline Maps For Apple Watch</p>
-          <h2>Leave the signal behind. Keep the map on your wrist.</h2>
+          <h2>Create the route on your wrist. Keep navigating beyond the signal.</h2>
           <p>
-            Download an area from Endravo on iPhone before your workout. Roads, trails, your position, the planned route, and the path you have covered stay visible on Apple Watch when cellular service disappears.
+            Download an area from Endravo on iPhone, then create a route directly on Apple Watch or follow one you already saved. Roads, trails, position, planned and covered paths, distance, and turn cues remain available when cellular service disappears.
           </p>
 
           <div class="offline-points" aria-label="How Endravo offline maps work">
@@ -1716,14 +2445,14 @@
               <span class="offline-point-mark">02</span>
               <span>
                 <strong>Save it to Apple Watch</strong>
-                <span>Download the map to your Watch before you leave reliable coverage.</span>
+                <span>Download the map and its routing data to your Watch before leaving reliable coverage.</span>
               </span>
             </div>
             <div class="offline-point">
               <span class="offline-point-mark">03</span>
               <span>
-                <strong>Explore without your phone</strong>
-                <span>Use the saved map during outdoor GPS activities and stay oriented on roads and trails.</span>
+                <strong>Create and navigate</strong>
+                <span>Place destinations and choose one-way, return-loop, or out-and-back routing from the Watch.</span>
               </span>
             </div>
           </div>
@@ -1731,12 +2460,12 @@
           <div class="hero-actions">
             <a class="btn btn-primary" href="https://apps.apple.com/us/app/endravo/id6761561213" target="_blank" rel="noopener noreferrer">Get Endravo</a>
           </div>
-          <p class="offline-note">Download map areas before leaving coverage. GPS remains available without cellular service.</p>
+          <p class="offline-note">Download map areas before leaving coverage. GPS remains available without cellular service. Offline maps are a supplemental navigation aid and do not replace official maps, trail signage, or sound judgment.</p>
         </div>
 
         <div class="watch-stage" aria-label="Endravo offline map displayed on Apple Watch">
           <figure class="watch-reference">
-            <img src="assets/endravo-offline-watch.jpeg" alt="Endravo offline map navigation running on Apple Watch" loading="lazy" decoding="async" />
+            <img src="assets/watch-offline-navigation.png" alt="Endravo offline map showing a planned route, covered path, distance, and turn guidance on Apple Watch" loading="lazy" decoding="async" />
           </figure>
         </div>
       </div>
@@ -1748,28 +2477,28 @@
           <p class="section-kicker">Planning Flow</p>
           <h2>From training intent to a week you can execute.</h2>
           <p>
-            Start with the goal, shape the schedule, route the run, send the workout to Apple Watch, then review what actually happened. Endravo keeps that loop in one place.
+            Start with the goal, shape the schedule, prepare the route, send the workout to Apple Watch, then review what actually happened. Endravo keeps the entire endurance loop in one place.
           </p>
         </article>
         <div class="timeline" aria-label="Endravo planning workflow">
           <div class="timeline-row">
             <strong>01</strong>
-            <span>Choose the training focus: race prep, base building, strength, recovery, or weight management.</span>
+            <span>Choose the focus: running, cycling, swimming, hiking, strength, recovery, or multisport race preparation.</span>
             <span class="tag">Goal</span>
           </div>
           <div class="timeline-row">
             <strong>02</strong>
-            <span>Build the week with runs, strength sessions, recovery work, and planned intensity.</span>
+            <span>Build the week around your sport, available time, strength work, recovery, and planned intensity.</span>
             <span class="tag">Schedule</span>
           </div>
           <div class="timeline-row">
             <strong>03</strong>
-            <span>Prepare routes and workouts so the session is ready before you leave.</span>
+            <span>Prepare routes and structured workouts so the session is ready before you leave.</span>
             <span class="tag">Prepare</span>
           </div>
           <div class="timeline-row">
             <strong>04</strong>
-            <span>Review completed activity and recovery context on iPhone or the dashboard.</span>
+            <span>Review completed activities, weekly load, progress, and recovery context on iPhone or the dashboard.</span>
             <span class="tag">Review</span>
           </div>
         </div>
@@ -1780,9 +2509,9 @@
       <div class="container">
         <div class="section-heading center">
           <p class="section-kicker">Platform</p>
-          <h2>Made for serious planning across the places athletes work.</h2>
+          <h2>One endurance system across iPhone, Apple Watch, and the web.</h2>
           <p>
-            Use Endravo from the device that fits the moment: quick updates on iPhone, workout execution on Apple Watch, and broader review from the dashboard.
+            Plan the week on iPhone, execute workouts on Apple Watch, and review training load, recovery, health metrics, and progress from the web dashboard.
           </p>
         </div>
         <div class="platform-photo" data-tilt>
@@ -1791,15 +2520,15 @@
         <div class="platform-grid">
           <article class="platform-card">
             <h3>iPhone app</h3>
-            <p>Plan weeks, create workouts, manage routes, and keep your training library organized.</p>
+            <p>Build training plans, create structured workouts, manage routes, adjust the calendar, and understand recovery.</p>
           </article>
           <article class="platform-card">
             <h3>Apple Watch</h3>
-            <p>Run structured sessions and keep downloaded roads, trails, routes, and your covered path available from your wrist.</p>
+            <p>Record endurance and multisport sessions, use compatible sensors, create routes, and navigate downloaded roads and trails from your wrist.</p>
           </article>
           <article class="platform-card">
             <h3>Web dashboard</h3>
-            <p>Use a larger screen for reviewing training data, planning ahead, and keeping the system clean.</p>
+            <p>Review weekly load, recovery, health metrics, completed activities, and AI plan adjustments on a larger screen.</p>
           </article>
         </div>
       </div>
@@ -1816,9 +2545,9 @@
       <div class="container cta-inner">
         <div>
           <p class="section-kicker">Get Started</p>
-          <h2>Build a cleaner training week with Endravo.</h2>
+          <h2>Train every discipline. See the whole athlete.</h2>
           <p>
-            Download the iPhone app, connect your planning workflow, and use the dashboard when you want a wider view of the week ahead.
+            Download Endravo to plan, record, navigate, and recover with one connected system built for endurance athletes.
           </p>
         </div>
         <div class="cta-actions">
@@ -1831,7 +2560,7 @@
 
   <footer>
     <div class="container footer-inner">
-      <div>&copy; 2026 Endravo. Training planning for running, strength, recovery, and routes.</div>
+      <div>&copy; 2026 Endravo. Training, recovery, routes, and offline navigation for endurance athletes.</div>
       <div class="footer-links">
         <a href="privacy-policy.html">Privacy Policy</a>
         <a href="copyright.html">Copyright</a>
