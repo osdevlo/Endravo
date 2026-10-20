@@ -171,6 +171,8 @@
       line-height: 1.7;
     }
 
+    .content a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+
     .content strong {
       color: var(--text);
     }
@@ -283,8 +285,8 @@
       </a>
       <nav class="nav-links">
         <a href="index.html#features">Features</a>
-        <a href="index.html#plans">Plans</a>
-        <a href="index.html#watch">Apple Watch</a>
+        <a href="index.html#planning">Plans</a>
+        <a href="index.html#offline-maps">Apple Watch</a>
         <a href="index.html#download">Download</a>
       </nav>
     </div>
@@ -300,7 +302,7 @@
       </div>
 
       <div class="content">
-        <div class="update-date"><strong>Last Updated:</strong> April 2026</div>
+        <div class="update-date"><strong>Last Updated:</strong> October 20, 2026</div>
 
         <h2>Introduction</h2>
         <p>
@@ -343,6 +345,18 @@
           <li><strong>Business Transfers:</strong> In the event of a merger, acquisition, bankruptcy, or sale of assets, your information may be transferred as part of that transaction.</li>
           <li><strong>With Your Consent:</strong> We may share your information when you explicitly consent to such sharing.</li>
         </ul>
+
+        <h2 id="strava">Strava Connection and Activity Sharing</h2>
+        <p>Connecting Strava is optional. Endravo uses Strava’s OAuth authorization page to obtain your express permission; Endravo does not collect your Strava password. The current connection requests <code>read</code> and <code>activity:write</code> permissions. You can review the permissions on Strava before authorizing.</p>
+        <ul>
+          <li><strong>Data collected and method:</strong> Through Strava’s API, Endravo receives your connected athlete identifier and basic profile information, OAuth access and refresh tokens, and upload or activity-update results. These support your connection, upload status, and duplicate prevention.</li>
+          <li><strong>Data sent to Strava:</strong> When you authorize sharing, Endravo sends activity information such as title, caption, sport, start time, duration, distance, and GPS route when available. New eligible activities can upload after connection; older activities require a manual upload. Review activity visibility and privacy controls in Strava.</li>
+          <li><strong>Storage and use:</strong> Connection credentials are stored on Endravo’s backend, and upload records support activity status and duplicate prevention. Strava API data is used for the authorized connection and sharing features, not advertising, sale, or AI model training or operation. Endravo’s separately recorded workout data is distinct from data received from Strava.</li>
+          <li><strong>Withdraw consent:</strong> Use Profile → Data &amp; Permissions → Strava → Disconnect Strava in Endravo, or revoke access in <a href="https://www.strava.com/settings/apps">Strava’s My Apps settings</a>. This stops future authorized access; it does not delete activities already sent to your Strava account.</li>
+          <li><strong>Access and deletion:</strong> Email <a href="mailto:support@endravo.app?subject=Strava%20data%20request">support@endravo.app</a> to request access to, or deletion of, your Strava-related data held by Endravo. We verify ownership as needed and provide written confirmation when deletion is complete. If you also want your original Endravo workouts or entire account deleted, include that in your request. Activities already on Strava are managed through Strava.</li>
+          <li><strong>Strava’s use of API usage data:</strong> Strava may monitor and collect data about use of its API and use that information for its business purposes, including service improvements, support, and compliance with its API terms.</li>
+        </ul>
+        <p>Strava handles information sent to its service under its <a href="https://www.strava.com/legal/privacy">Privacy Policy</a> and <a href="https://www.strava.com/legal/terms">Terms of Service</a>. This policy does not replace or override Strava’s policy. Endravo is independent and is not sponsored or endorsed by Strava. See <a href="support.html#strava">Endravo’s Strava support guide</a> for instructions.</p>
 
         <h2>4. Data Security</h2>
         <p>
@@ -456,7 +470,7 @@
       <div class="footer-links">
         <a href="privacy-policy.html">Privacy Policy</a>
         <a href="copyright.html">Copyright</a>
-        <a href="#terms">Terms of Service</a>
+        <a href="support.html">Support</a>
         <a href="mailto:support@endravo.app">Contact Support</a>
       </div>
     </div>
